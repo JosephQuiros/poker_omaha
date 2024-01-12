@@ -2,7 +2,8 @@
 
 Card::Card()
 {
-
+	this->index = NULL;
+	this->suit = NULL;
 }
 
 Card::Card(int index, int suit, std::string dir)
