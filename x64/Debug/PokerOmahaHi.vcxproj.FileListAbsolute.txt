@@ -1,1 +1,2 @@
 G:\ProyectosC++\PokerOmahaHi\x64\Debug\PokerOmahaHi.exe
+C:\Projects\proyectoVerano\poker_omaha\x64\Debug\PokerOmahaHi.exe
