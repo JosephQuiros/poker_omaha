@@ -7,5 +7,8 @@
 int main()
 {
     Deck deck;
+    deck.shuffleDeck();
+    deck.printCard();
+
     return 0;
 }

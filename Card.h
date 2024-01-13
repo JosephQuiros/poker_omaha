@@ -19,7 +19,8 @@ public:
 	Card();
 	Card(int index, int suit, std::string dir);
 	~Card();
-
+	int getIndex(); //debug
+	int getSuit(); //debug
 
 
 };
