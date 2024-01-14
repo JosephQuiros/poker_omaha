@@ -12,13 +12,15 @@ class Card
 private:
 	int index;
 	int suit;
-	sf::RectangleShape shape;
+	sf::Texture texture;
+	sf::Sprite shape;
 
 
 public:
 	Card();
 	Card(int index, int suit, std::string dir);
 	~Card();
+	sf::Sprite getSprite();
 	int getIndex(); //debug
 	int getSuit(); //debug
 

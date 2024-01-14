@@ -1,14 +1,12 @@
 
 #include <iostream>
 #include "SFML/Graphics.hpp"
-#include "Deck.h"
+#include "Game.h"
 
 
 int main()
 {
-    Deck deck;
-    deck.shuffleDeck();
-    deck.printCard();
-
+    Game poker;
+    poker.run();
     return 0;
 }

@@ -1,5 +1,2 @@
-﻿  Deck.cpp
-G:\ProyectosC++\PokerOmahaHi\Deck.cpp(45,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-  main.cpp
-  Generando código...
+﻿  Game.cpp
   PokerOmahaHi.vcxproj -> G:\ProyectosC++\PokerOmahaHi\x64\Debug\PokerOmahaHi.exe

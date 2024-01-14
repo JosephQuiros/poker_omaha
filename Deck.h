@@ -17,11 +17,13 @@ public:
 	~Deck();
 	void printCard(); //debug
 	void shuffleDeck();
+	Card* getCard(int pos);
+
 
 private:
 	
 	int getRandomNum(int position);
-	void swapCard(Card*& card1, Card*& card2);
+	void swapCard(Card* &card1, Card* &card2);
 };
 #endif 
 

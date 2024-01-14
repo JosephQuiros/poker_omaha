@@ -50,6 +50,11 @@ void Deck::shuffleDeck()
 	}
 }
 
+Card* Deck::getCard(int pos)
+{
+	return deck[pos];
+}
+
 int Deck::getRandomNum(int position)
 {
 
