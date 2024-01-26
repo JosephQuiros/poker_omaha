@@ -4,7 +4,6 @@ Game::Game()
 {
 	init();
 	deck.shuffleDeck();
-	carta = deck.getCard(0);
 
 }
 
@@ -49,6 +48,5 @@ void Game::draw()
 {
 	window.clear();
 	window.draw(background);
-	window.draw(carta->getSprite());
 	window.display();
 }

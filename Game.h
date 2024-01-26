@@ -2,6 +2,7 @@
 #ifndef GAME_H
 #define GAME_H
 #include "Deck.h"
+#include "Player.h"
 #include "SFML/Graphics.hpp"
 
 class Game
@@ -12,7 +13,8 @@ private:
 	sf::Texture texture;
 	sf::Sprite background;
 	Deck deck;
-	Card* carta;
+	Player* player;
+
 
 public:
 	Game();

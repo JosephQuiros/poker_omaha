@@ -16,6 +16,7 @@ private:
 	sf::Sprite shape;
 
 
+
 public:
 	Card();
 	Card(int index, int suit, std::string dir);

@@ -1,2 +1,14 @@
-﻿  Game.cpp
+﻿  Card.cpp
+  Deck.cpp
+G:\ProyectosC++\PokerOmahaHi\Deck.cpp(38,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+  Game.cpp
+G:\ProyectosC++\PokerOmahaHi\Player.h(11,8): warning C4200: se ha utilizado una extensión no estándar: matriz de tamaño cero en struct/union
+G:\ProyectosC++\PokerOmahaHi\Player.h(11,8): message : Un constructor con valor predeterminado o un operador de asignación de copia o movimiento ignorará a este miembro.
+  main.cpp
+G:\ProyectosC++\PokerOmahaHi\Player.h(11,8): warning C4200: se ha utilizado una extensión no estándar: matriz de tamaño cero en struct/union
+G:\ProyectosC++\PokerOmahaHi\Player.h(11,8): message : Un constructor con valor predeterminado o un operador de asignación de copia o movimiento ignorará a este miembro.
+  Player.cpp
+G:\ProyectosC++\PokerOmahaHi\Player.h(11,8): warning C4200: se ha utilizado una extensión no estándar: matriz de tamaño cero en struct/union
+G:\ProyectosC++\PokerOmahaHi\Player.h(11,8): message : Un constructor con valor predeterminado o un operador de asignación de copia o movimiento ignorará a este miembro.
+  Generando código...
   PokerOmahaHi.vcxproj -> G:\ProyectosC++\PokerOmahaHi\x64\Debug\PokerOmahaHi.exe

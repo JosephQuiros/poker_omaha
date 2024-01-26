@@ -24,6 +24,7 @@ private:
 	
 	int getRandomNum(int position);
 	void swapCard(Card* &card1, Card* &card2);
+	void createCards();
 };
 #endif 
 
