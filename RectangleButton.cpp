@@ -3,18 +3,21 @@
 RectangleButton::RectangleButton()
 {
 }
+
 RectangleButton::RectangleButton(float posX, float posY,float width, float height, std::string font, std::string text) : Button(posX,posY)
 {
 	shape.setSize(sf::Vector2f(width, height));
 	shape.setPosition(sf::Vector2f(posX, posY));
-	sf::Font fonts;
 
+	sf::Font fonts;
 	if (!fonts.loadFromFile(font)) {
 		std::cout << "error ";
 		exit(-1);
 	}
 	this-> text.setFont(fonts);
 	this->text.setString(text);
+	this->text.setPosition(sf::Vector2f(posX, posY));
+
 }
 
 RectangleButton::~RectangleButton()
@@ -23,5 +26,10 @@ RectangleButton::~RectangleButton()
 
 void RectangleButton::draw(sf::RenderWindow& window)
 {
+	window.draw(shape);
+}
 
+bool RectangleButton::isPressed(sf::Vector2f& mousePos)
+{
+	return shape.getGlobalBounds().contains(mousePos);
 }

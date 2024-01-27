@@ -3,7 +3,6 @@
 #define BUTTON_H
 #include <iostream> //debug
 #include "SFML/Graphics.hpp"
-
 class Button
 {
 protected:
@@ -14,7 +13,8 @@ public:
 	Button();
 	Button(float x,float y);
 	~Button();
-	virtual void draw() = 0;
+	virtual void draw(sf::RenderWindow& window) = 0;
+	virtual bool isPressed(sf::Vector2f& mousePos) = 0;
 };
 
 #endif 

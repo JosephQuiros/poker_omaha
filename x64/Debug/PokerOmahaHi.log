@@ -1,18 +1,12 @@
-﻿  Button.cpp
-  Card.cpp
-  Deck.cpp
-C:\Projects\proyectPoker\poker_omaha\Deck.cpp(38,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-  Game.cpp
-C:\Projects\proyectPoker\poker_omaha\Player.h(11,8): warning C4200: se ha utilizado una extensión no estándar: matriz de tamaño cero en struct/union
-C:\Projects\proyectPoker\poker_omaha\Player.h(11,8): message : Un constructor con valor predeterminado o un operador de asignación de copia o movimiento ignorará a este miembro.
-  main.cpp
-C:\Projects\proyectPoker\poker_omaha\Player.h(11,8): warning C4200: se ha utilizado una extensión no estándar: matriz de tamaño cero en struct/union
-C:\Projects\proyectPoker\poker_omaha\Player.h(11,8): message : Un constructor con valor predeterminado o un operador de asignación de copia o movimiento ignorará a este miembro.
-  Menu.cpp
-C:\Projects\proyectPoker\poker_omaha\Menu.h(16,2): error C2535: 'Menu::Menu(void)': función miembro ya definida o declarada
-C:\Projects\proyectPoker\poker_omaha\Menu.h(15,2): message : vea la declaración de 'Menu::Menu'
-  Player.cpp
-C:\Projects\proyectPoker\poker_omaha\Player.h(11,8): warning C4200: se ha utilizado una extensión no estándar: matriz de tamaño cero en struct/union
-C:\Projects\proyectPoker\poker_omaha\Player.h(11,8): message : Un constructor con valor predeterminado o un operador de asignación de copia o movimiento ignorará a este miembro.
-  RectangleButton.cpp
-  Generando código...
+﻿  Menu.cpp
+G:\ProyectosC++\PokerOmahaHi\Menu.cpp(44,65): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+G:\ProyectosC++\PokerOmahaHi\Menu.cpp(44,44): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+  PokerOmahaHi.vcxproj -> G:\ProyectosC++\PokerOmahaHi\x64\Debug\PokerOmahaHi.exe

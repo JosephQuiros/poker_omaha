@@ -13,10 +13,10 @@ private:
 public:
 	RectangleButton();
 	RectangleButton(float posX, float posY,float width,float height, std::string font, std::string text);
-
 	~RectangleButton();
 	void draw(sf::RenderWindow &window);
+	bool isPressed(sf::Vector2f& mousePos);
 };
 
 
-#endif // !RECTANGLEBUTTON_H
+#endif
