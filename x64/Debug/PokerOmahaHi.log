@@ -1,12 +1,15 @@
 ﻿  Menu.cpp
-G:\ProyectosC++\PokerOmahaHi\Menu.cpp(44,65): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+G:\ProyectosC++\poker_omaha\Menu.cpp(46,65): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-G:\ProyectosC++\PokerOmahaHi\Menu.cpp(44,44): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+G:\ProyectosC++\poker_omaha\Menu.cpp(46,44): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-  PokerOmahaHi.vcxproj -> G:\ProyectosC++\PokerOmahaHi\x64\Debug\PokerOmahaHi.exe
+  RectangleButton.cpp
+  main.cpp
+  Generando código...
+  PokerOmahaHi.vcxproj -> G:\ProyectosC++\poker_omaha\x64\Debug\PokerOmahaHi.exe

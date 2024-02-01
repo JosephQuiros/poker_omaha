@@ -12,7 +12,9 @@ Menu::~Menu()
 void Menu::init()
 {
 	window.create(sf::VideoMode(500, 600), "Poker");
-	rectanglebutton[0] = RectangleButton(200.f, 180.f, 100.f, 50.f, "Fonts/timesbd.ttf", "Hola");
+	rectanglebutton[0].create(200.f, 50.f, "Buttons/RB1.jpg");
+	rectanglebutton[1].create(200.f, 50.f, "Buttons/RB1.jpg");
+	rectanglebutton[0].setPostion(0.f, 70.f);
 	optionMenu = 0;
 }
 
@@ -69,6 +71,7 @@ void Menu::draw()
 	window.clear(sf::Color::Magenta);
 	if (optionMenu == 0) {
 		rectanglebutton[0].draw(window);
+		rectanglebutton[1].draw(window);
 	}
 	window.display();
 }
