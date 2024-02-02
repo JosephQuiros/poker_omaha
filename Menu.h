@@ -4,23 +4,33 @@
 #include <iostream> //debug
 #include "SFML/Graphics.hpp"
 #include "RectangleButton.h"
+#include "TriangleButton.h"
 
 class Menu
 {
 private:
+
+	
 	sf::RenderWindow window;
-	RectangleButton rectanglebutton[3];
+	static const int TOTAL_BUTTONS = 7;
+	//RectangleButton rectanglebutton[5];
+	Button* buttonArray[TOTAL_BUTTONS];
 	int optionMenu;
 	int numPlayers;
-
 
 public:
 	Menu();
 	~Menu();
-	void init();
 	void run();
+	
+private:
+	void init();
 	void update();
 	void draw();
+	void createButtons();
+	int findTheButtonPresed(sf::Vector2f& mousePos);
+	void drawScene();
+
 };
 
 
