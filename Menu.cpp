@@ -2,7 +2,8 @@
 
 Menu::Menu()
 {
-	numPlayers = 2;
+	window.create(sf::VideoMode(500, 600), "Poker");
+	createButtons();
 	init();
 }
 
@@ -16,28 +17,14 @@ Menu::~Menu()
 
 }
 
-void Menu::init()
-{
-	window.create(sf::VideoMode(500, 600), "Poker");
-	createButtons();
-	optionMenu = 0;
-}
-
 void Menu::createButtons()
 {
-	int i;
-	for (i = 0; i < 5 ; i++) {
-		buttonArray[i] = new RectangleButton();
-	}
-	for (i = 5; i < TOTAL_BUTTONS; i++) {
-		buttonArray[i] = new TriangleButton();
-	}
 
-	buttonArray[0]->create(200.f, 50.f, "PLAY", "Fonts/times.ttf");
-	buttonArray[1]->create(200.f, 50.f, "ABOUT", "Fonts/times.ttf");
-	buttonArray[2]->create(200.f, 50.f, "EXIT", "Fonts/times.ttf");
-	buttonArray[3]->create(200.f, 50.f, "BACK", "Fonts/times.ttf");
-	buttonArray[4]->create(200.f, 50.f, "CONTINUE", "Fonts/times.ttf");
+	buttonArray[0] = new RectangleButton(200.f, 50.f, "PLAY", "Fonts/times.ttf");
+	buttonArray[1] = new RectangleButton(200.f, 50.f, "ABOUT", "Fonts/times.ttf");
+	buttonArray[2] = new RectangleButton(200.f, 50.f, "EXIT", "Fonts/times.ttf");
+	buttonArray[3] = new RectangleButton(200.f, 50.f, "BACK", "Fonts/times.ttf");
+	buttonArray[4] = new RectangleButton(200.f, 50.f, "CONTINUE", "Fonts/times.ttf");
 
 	buttonArray[0]->setPostion(150.f, 230.f);
 	buttonArray[1]->setPostion(150.f, 330.f);
@@ -47,14 +34,30 @@ void Menu::createButtons()
 
 	//Triangular buttons
 
-	buttonArray[6]->create(20.f);
-	buttonArray[5]->create(20.f);
-
+	buttonArray[5] = new TriangleButton(20.f);
+	buttonArray[6] = new TriangleButton(20.f);
+	
 	buttonArray[5]->setPostion(380.f, 190.f);
 
 	buttonArray[6]->setPostion(420.f, 290.f);
 	buttonArray[6]->rotate(180);
 
+}
+
+void Menu::init()
+{
+	int i;
+
+	for (i = 0; i < 3; i++) {
+		buttonArray[i]->setVisibility(true);
+	}
+
+	for (i = 3; i < TOTAL_BUTTONS; i++) {
+		buttonArray[i]->setVisibility(false);
+	}
+
+	numPlayers = 2;
+	optionMenu = 0;
 }
 
 int Menu::findTheButtonPresed(sf::Vector2f& mousePos)
@@ -97,11 +100,9 @@ void Menu::drawScene()
 }
 
 
-void Menu::run()
+int Menu::selectNumPlayer()
 {
-	buttonArray[0]->setVisibility(true);
-	buttonArray[1]->setVisibility(true);
-	buttonArray[2]->setVisibility(true);
+	init();
 
 	while (window.isOpen())
 	{
@@ -111,6 +112,7 @@ void Menu::run()
 		{
 			if (event.type == sf::Event::Closed) {
 				window.close();
+				return -1;
 			}
 
 			if (event.type == sf::Event::KeyPressed) {
@@ -147,6 +149,7 @@ void Menu::run()
 						break;
 					case 2:
 						window.close();
+						return -1;
 						break;
 
 					case 3:
@@ -161,7 +164,9 @@ void Menu::run()
 						break;
 
 					case 4:
-						window.close();
+						window.setVisible(false);
+						system("cls");
+						return numPlayers;
 						break;
 
 					case 5:
@@ -188,6 +193,11 @@ void Menu::run()
 
 		draw();
 	}
+}
+
+sf::Window* Menu::getWindow()
+{
+	return &window;
 }
 
 void Menu::update()

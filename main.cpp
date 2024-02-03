@@ -1,12 +1,14 @@
 
 #include <iostream>
 #include "SFML/Graphics.hpp"
-#include "menu.h"
+#include "Game.h"
 
 
 int main()
 {
-    Menu debug;
-    debug.run();
+    Game poker;
+
+    poker.run();
+
     return 0;
 }

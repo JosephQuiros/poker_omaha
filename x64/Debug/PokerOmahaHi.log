@@ -1,12 +1,3 @@
-﻿  Menu.cpp
-C:\Projects\proyectPoker\poker_omaha\Menu.cpp(128,65): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
-          with
-          [
-              T=float
-          ]
-C:\Projects\proyectPoker\poker_omaha\Menu.cpp(128,44): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
-          with
-          [
-              T=float
-          ]
-  PokerOmahaHi.vcxproj -> C:\Projects\proyectPoker\poker_omaha\x64\Debug\PokerOmahaHi.exe
+﻿  Deck.cpp
+G:\ProyectosC++\poker_omaha\Deck.cpp(38,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+  PokerOmahaHi.vcxproj -> G:\ProyectosC++\poker_omaha\x64\Debug\PokerOmahaHi.exe

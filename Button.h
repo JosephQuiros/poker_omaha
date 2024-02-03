@@ -18,8 +18,6 @@ public:
 	~Button();
 	virtual void draw(sf::RenderWindow& window) = 0;
 	virtual bool isPressed(sf::Vector2f& mousePos) = 0;
-	virtual void create(float width, float height, std::string tittleButton, std::string fontDir) = 0;
-	virtual void create(float size) = 0;
 	virtual void setPostion(float posX, float posY) = 0;
 	virtual void setVisibility(bool visible) = 0;
 	virtual void rotate(float angle) = 0;

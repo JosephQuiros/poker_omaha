@@ -13,18 +13,17 @@ private:
 	float width;
 
 public:
-	RectangleButton();
+	RectangleButton(float width, float height, std::string tittleButton, std::string fontDir);
 	~RectangleButton();
 	void draw(sf::RenderWindow &window);
-	void create(float width, float height, std::string tittleButton,std::string fontDir);
 	void setPostion(float posX, float posY);
 	bool isPressed(sf::Vector2f& mousePos);
 	void setVisibility(bool visible);
-	
+	void rotate(float angle);
+
 private:
 	void setCenteredText();
-	void create(float size);
-	void rotate(float angle);
+	
 };
 
 

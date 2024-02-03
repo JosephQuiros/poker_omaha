@@ -7,8 +7,10 @@
 class Player
 {
 private:
-	int MAX_CARDS = 4;
-	Card* ownDeck[];
+	static const int MAX_CARDS = 4;
+	Card* ownDeck[MAX_CARDS];
+	float posX;
+	float posY;
 
 public:
 	Player();

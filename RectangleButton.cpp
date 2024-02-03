@@ -1,25 +1,6 @@
 #include "RectangleButton.h"
 
-RectangleButton::RectangleButton()
-{
-}
-
-
-RectangleButton::~RectangleButton()
-{
-}
-
-void RectangleButton::draw(sf::RenderWindow& window)
-{
-	if (isVisible) {
-
-		window.draw(shape);
-		window.draw(text);
-	}
-
-}
-
-void RectangleButton::create(float width, float height,std::string tittleButton, std::string fontDir)
+RectangleButton::RectangleButton(float width, float height,std::string tittleButton, std::string fontDir)
 {
 	posX = 0;
 	posY = 0;
@@ -39,7 +20,22 @@ void RectangleButton::create(float width, float height,std::string tittleButton,
 	text.setString(tittleButton);
 	text.setFillColor(sf::Color::Black);
 
-	setCenteredText();	
+	setCenteredText();
+}
+
+
+RectangleButton::~RectangleButton()
+{
+}
+
+void RectangleButton::draw(sf::RenderWindow& window)
+{
+	if (isVisible) {
+
+		window.draw(shape);
+		window.draw(text);
+	}
+
 }
 
 void RectangleButton::setCenteredText()
@@ -70,11 +66,9 @@ void RectangleButton::setVisibility(bool visible)
 
 }
 
-void RectangleButton::create(float size)
-{
-}
-
 void RectangleButton::rotate(float angle)
 {
+	shape.rotate(angle);
+	text.rotate(angle);
 }
 

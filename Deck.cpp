@@ -31,7 +31,7 @@ void Deck::createCards()
 	}
 }
 
-void Deck::shuffleDeck()
+void Deck::shuffle()
 {
 	int i, randomNum;
 
@@ -62,7 +62,7 @@ void Deck::printCard()
 {
 	int i;
 
-	shuffleDeck();
+	shuffle();
 
 	for (i = 0; i < MAX; i++) {
 		std::cout << deck[i]->getIndex() << "----" << deck[i]->getSuit() << "\n";

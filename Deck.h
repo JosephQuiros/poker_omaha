@@ -8,15 +8,15 @@
 class Deck
 {
 private:
-	const int MAX = 52;
-	Card* deck[52];
+	static const int MAX = 52;
+	Card* deck[MAX];
 	
 
 public:
 	Deck();
 	~Deck();
 	void printCard(); //debug
-	void shuffleDeck();
+	void shuffle();
 	Card* getCard(int pos);
 
 

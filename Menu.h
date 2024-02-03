@@ -13,7 +13,6 @@ private:
 	
 	sf::RenderWindow window;
 	static const int TOTAL_BUTTONS = 7;
-	//RectangleButton rectanglebutton[5];
 	Button* buttonArray[TOTAL_BUTTONS];
 	int optionMenu;
 	int numPlayers;
@@ -21,7 +20,8 @@ private:
 public:
 	Menu();
 	~Menu();
-	void run();
+	int selectNumPlayer();
+	sf::Window* getWindow();
 	
 private:
 	void init();

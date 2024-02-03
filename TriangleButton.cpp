@@ -1,7 +1,17 @@
 #include "TriangleButton.h"
 
-TriangleButton::TriangleButton()
+TriangleButton::TriangleButton(float size)
 {
+	posX = 0;
+	posY = 0;
+	this->size = size;
+
+	isVisible = false;
+
+	tringleButton.setRadius(size);
+	tringleButton.setPointCount(3);
+
+	tringleButton.setPosition(sf::Vector2f(posX, posY));
 }
 
 TriangleButton::~TriangleButton()
@@ -22,21 +32,6 @@ bool TriangleButton::isPressed(sf::Vector2f& mousePos)
 	return false;
 }
 
-void TriangleButton::create(float size)
-{
-	posX = 0;
-	posY = 0;
-	this->size = size;
-
-	isVisible = false;
-
-	tringleButton.setRadius(size);
-	tringleButton.setPointCount(3);
-
-	tringleButton.setPosition(sf::Vector2f(posX, posY));
-
-}
-
 void TriangleButton::setPostion(float posX, float posY)
 {
 	tringleButton.setPosition(sf::Vector2f(posX, posY));
@@ -50,8 +45,4 @@ void TriangleButton::setVisibility(bool visible)
 void TriangleButton::rotate(float angle)
 {
 	tringleButton.rotate(angle);
-}
-
-void TriangleButton::create(float width, float height, std::string tittleButton, std::string fontDir)
-{
 }
