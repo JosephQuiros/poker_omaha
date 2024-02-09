@@ -1,0 +1,31 @@
+#pragma once
+#ifndef DEALER_H
+#define DEALER_H
+#include "Card.h"
+#include "Deck.h"
+#include "Player.h"
+
+class Dealer
+{
+private:
+	static const int MAX_CARDS = 5;
+	Deck* deck;
+	Card* dealerDeck[MAX_CARDS];
+	int positionInDeck;
+	int numDealerCards;
+	float posX;
+	float posY;
+
+public:
+	Dealer();
+	~Dealer();
+	void dealCard(Player& player);
+	void takeCard(int iterations);
+	void setPosition(float posX, float posY);
+	void drawCards(sf::RenderWindow& window);
+private:
+};
+
+#endif
+
+

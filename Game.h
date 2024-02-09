@@ -2,10 +2,11 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "Deck.h"
+
+#include "Menu.h"
 #include "Player.h"
-#include "menu.h"
-#include "SFML/Graphics.hpp"
+#include "Dealer.h"
+#include "RectangleButton.h"
 
 class Game
 {
@@ -14,9 +15,10 @@ private:
 	sf::RenderWindow window;
 	sf::Texture texture;
 	sf::Sprite background;
-	Deck deck;
+	Dealer* dealer;
 	Player* playersArray;
-	int actualCardDeck;
+	static const int TOTAL_BUTTONS = 3;
+	Button* buttonArray[TOTAL_BUTTONS];
 
 
 
@@ -28,11 +30,16 @@ public:
 	
 
 private:
-	void init(int numPlayers);
+	void startGame(int numPlayers);
 	void update();
-	void draw();
+	void draw(int numPlayers);
 	void dealCardsToPlayers(int numPlayers);
 	void createWindow();
+	void setPlayerAndDealerPosition(int numPlayers);
+	void drawPlayers(int numPlayers);
+	void drawButtons();
+	void createbutton();
+	void init();
 };
 
 #endif

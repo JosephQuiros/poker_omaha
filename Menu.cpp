@@ -99,6 +99,73 @@ void Menu::drawScene()
 
 }
 
+int Menu::findButton(sf::Vector2f mousePos)
+{
+	switch (findTheButtonPresed(mousePos))
+	{
+	case -1:
+		std::cout << "no preciono ningun boton\n";
+		return 0;
+		break;
+
+	case 0:
+		optionMenu = 1;
+		buttonArray[0]->setVisibility(false);
+		buttonArray[1]->setVisibility(false);
+		buttonArray[2]->setVisibility(false);
+		buttonArray[3]->setVisibility(true);
+		buttonArray[4]->setVisibility(true);
+		buttonArray[5]->setVisibility(true);
+		buttonArray[6]->setVisibility(true);
+		return 0;
+		break;
+
+	case 1:
+		return 0;
+		break;
+
+	case 2:
+		window.close();
+		return -1;
+		break;
+
+	case 3:
+		optionMenu = 0;
+		buttonArray[0]->setVisibility(true);
+		buttonArray[1]->setVisibility(true);
+		buttonArray[2]->setVisibility(true);
+		buttonArray[3]->setVisibility(false);
+		buttonArray[4]->setVisibility(false);
+		buttonArray[5]->setVisibility(false);
+		buttonArray[6]->setVisibility(false);
+		return 0;
+		break;
+
+	case 4:
+		window.setVisible(false);
+		system("cls");
+		return 1;
+		break;
+
+	case 5:
+		if (numPlayers < 6)
+			numPlayers++;
+		std::cout << numPlayers << "\n";
+		return 0;
+		break;
+	case 6:
+		if (numPlayers > 2)
+			numPlayers--;
+		std::cout << numPlayers << "\n";
+		return 0;
+		break;
+
+	default:
+		break;
+	}
+
+	return 0;
+}
 
 int Menu::selectNumPlayer()
 {
@@ -130,61 +197,14 @@ int Menu::selectNumPlayer()
 				sf::Vector2f mousePos(event.mouseButton.x, event.mouseButton.y);
 
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+					int returnCase = findButton(mousePos);
 
-					switch (findTheButtonPresed(mousePos))
-					{
-					case 0:
-						optionMenu = 1;
-						buttonArray[0]->setVisibility(false);
-						buttonArray[1]->setVisibility(false);
-						buttonArray[2]->setVisibility(false);
-						buttonArray[3]->setVisibility(true);
-						buttonArray[4]->setVisibility(true);
-						buttonArray[5]->setVisibility(true);
-						buttonArray[6]->setVisibility(true);
-
-						break;
-					case 1:
-
-						break;
-					case 2:
-						window.close();
+					if (returnCase == -1) {
 						return -1;
-						break;
-
-					case 3:
-						optionMenu = 0;
-						buttonArray[0]->setVisibility(true);
-						buttonArray[1]->setVisibility(true);
-						buttonArray[2]->setVisibility(true);
-						buttonArray[3]->setVisibility(false);
-						buttonArray[4]->setVisibility(false);
-						buttonArray[5]->setVisibility(false);
-						buttonArray[6]->setVisibility(false);
-						break;
-
-					case 4:
-						window.setVisible(false);
-						system("cls");
-						return numPlayers;
-						break;
-
-					case 5:
-						if(numPlayers < 6)
-						numPlayers++;
-						std::cout << numPlayers<<"\n";
-
-						break;
-					case 6:
-						if (numPlayers > 2)
-						numPlayers--;
-						std::cout << numPlayers<<"\n";
-						break;
-
-					default:
-						break;
 					}
-
+					if (returnCase == 1) {
+						return numPlayers;
+					}
 				}
 			}
 		}
@@ -193,6 +213,7 @@ int Menu::selectNumPlayer()
 
 		draw();
 	}
+	return -1;
 }
 
 sf::Window* Menu::getWindow()

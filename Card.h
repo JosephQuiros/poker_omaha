@@ -22,6 +22,7 @@ public:
 	Card(int index, int suit, std::string dir);
 	~Card();
 	sf::Sprite getSprite();
+	void setPostions(float posX, float posY);
 	int getIndex(); //debug
 	int getSuit(); //debug
 

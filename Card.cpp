@@ -31,6 +31,11 @@ sf::Sprite Card::getSprite()
 	return shape;
 }
 
+void Card::setPostions(float posX, float posY)
+{
+	shape.setPosition(posX, posY);
+}
+
 int Card::getIndex()
 {
 	return index;

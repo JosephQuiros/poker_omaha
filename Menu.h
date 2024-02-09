@@ -30,7 +30,7 @@ private:
 	void createButtons();
 	int findTheButtonPresed(sf::Vector2f& mousePos);
 	void drawScene();
-
+	int findButton(sf::Vector2f mousePos);
 };
 
 
