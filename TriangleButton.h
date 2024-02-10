@@ -6,7 +6,7 @@
 class TriangleButton: public Button
 {
 private:
-	sf::CircleShape tringleButton;
+	sf::CircleShape triangleButton;
 	float size;
 
 public:

@@ -10,9 +10,9 @@ class Dealer
 private:
 	static const int MAX_CARDS = 5;
 	Deck* deck;
-	Card* dealerDeck[MAX_CARDS];
+	Card* communityDeck[MAX_CARDS];
 	int positionInDeck;
-	int numDealerCards;
+	int numCommunityCards;
 	float posX;
 	float posY;
 
@@ -23,6 +23,8 @@ public:
 	void takeCard(int iterations);
 	void setPosition(float posX, float posY);
 	void drawCards(sf::RenderWindow& window);
+	void returnCommunityCardsToDeck();
+	void shuffleDeck();
 private:
 };
 

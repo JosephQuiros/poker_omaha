@@ -5,16 +5,16 @@ Menu::Menu()
 	window.create(sf::VideoMode(500, 600), "Poker");
 	createButtons();
 	init();
+	poker = nullptr;
 }
 
 Menu::~Menu()
 {
+	std::cout << "destruir menu\n";
 	int i;
-	
 	for (i = 0; i < TOTAL_BUTTONS; i++) {
 		delete buttonArray[i];
 	}
-
 }
 
 void Menu::createButtons()
@@ -60,7 +60,7 @@ void Menu::init()
 	optionMenu = 0;
 }
 
-int Menu::findTheButtonPresed(sf::Vector2f& mousePos)
+int Menu::findTheButtonPressed(sf::Vector2f& mousePos)
 { 
 	int i;
 	for (i = 0; i < TOTAL_BUTTONS; i++) {
@@ -99,78 +99,82 @@ void Menu::drawScene()
 
 }
 
-int Menu::findButton(sf::Vector2f mousePos)
+void Menu::whatButtonWasPressed(sf::Vector2f mousePos)
 {
-	switch (findTheButtonPresed(mousePos))
+	switch (findTheButtonPressed(mousePos))
 	{
 	case -1:
 		std::cout << "no preciono ningun boton\n";
-		return 0;
 		break;
 
 	case 0:
-		optionMenu = 1;
-		buttonArray[0]->setVisibility(false);
-		buttonArray[1]->setVisibility(false);
-		buttonArray[2]->setVisibility(false);
-		buttonArray[3]->setVisibility(true);
-		buttonArray[4]->setVisibility(true);
-		buttonArray[5]->setVisibility(true);
-		buttonArray[6]->setVisibility(true);
-		return 0;
+		selectPlayers();
 		break;
 
 	case 1:
-		return 0;
 		break;
 
 	case 2:
 		window.close();
-		return -1;
 		break;
 
 	case 3:
-		optionMenu = 0;
-		buttonArray[0]->setVisibility(true);
-		buttonArray[1]->setVisibility(true);
-		buttonArray[2]->setVisibility(true);
-		buttonArray[3]->setVisibility(false);
-		buttonArray[4]->setVisibility(false);
-		buttonArray[5]->setVisibility(false);
-		buttonArray[6]->setVisibility(false);
-		return 0;
+		backToMenu();
 		break;
 
 	case 4:
 		window.setVisible(false);
-		system("cls");
-		return 1;
+		poker = new Poker(numPlayers);
+		poker->play();
+		delete poker;
+		backToMenu();
+		window.setVisible(true);
 		break;
 
 	case 5:
 		if (numPlayers < 6)
 			numPlayers++;
 		std::cout << numPlayers << "\n";
-		return 0;
 		break;
 	case 6:
 		if (numPlayers > 2)
 			numPlayers--;
 		std::cout << numPlayers << "\n";
-		return 0;
 		break;
 
 	default:
 		break;
 	}
 
-	return 0;
 }
 
-int Menu::selectNumPlayer()
+void Menu::backToMenu()
 {
-	init();
+	optionMenu = 0;
+	numPlayers = 2;
+	buttonArray[0]->setVisibility(true);
+	buttonArray[1]->setVisibility(true);
+	buttonArray[2]->setVisibility(true);
+	buttonArray[3]->setVisibility(false);
+	buttonArray[4]->setVisibility(false);
+	buttonArray[5]->setVisibility(false);
+	buttonArray[6]->setVisibility(false);
+}
 
+void Menu::selectPlayers()
+{
+	optionMenu = 1;
+	buttonArray[0]->setVisibility(false);
+	buttonArray[1]->setVisibility(false);
+	buttonArray[2]->setVisibility(false);
+	buttonArray[3]->setVisibility(true);
+	buttonArray[4]->setVisibility(true);
+	buttonArray[5]->setVisibility(true);
+	buttonArray[6]->setVisibility(true);
+}
+
+void Menu::run()
+{
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -179,7 +183,7 @@ int Menu::selectNumPlayer()
 		{
 			if (event.type == sf::Event::Closed) {
 				window.close();
-				return -1;
+				return;
 			}
 
 			if (event.type == sf::Event::KeyPressed) {
@@ -197,14 +201,7 @@ int Menu::selectNumPlayer()
 				sf::Vector2f mousePos(event.mouseButton.x, event.mouseButton.y);
 
 				if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-					int returnCase = findButton(mousePos);
-
-					if (returnCase == -1) {
-						return -1;
-					}
-					if (returnCase == 1) {
-						return numPlayers;
-					}
+					whatButtonWasPressed(mousePos);
 				}
 			}
 		}
@@ -213,12 +210,6 @@ int Menu::selectNumPlayer()
 
 		draw();
 	}
-	return -1;
-}
-
-sf::Window* Menu::getWindow()
-{
-	return &window;
 }
 
 void Menu::update()

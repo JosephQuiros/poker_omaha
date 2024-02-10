@@ -2,15 +2,15 @@
 #ifndef MENU_H
 #define MENU_H
 #include <iostream> //debug
-#include "SFML/Graphics.hpp"
 #include "RectangleButton.h"
 #include "TriangleButton.h"
+#include "Poker.h"
 
 class Menu
 {
 private:
 
-	
+	Poker* poker;
 	sf::RenderWindow window;
 	static const int TOTAL_BUTTONS = 7;
 	Button* buttonArray[TOTAL_BUTTONS];
@@ -20,17 +20,18 @@ private:
 public:
 	Menu();
 	~Menu();
-	int selectNumPlayer();
-	sf::Window* getWindow();
+	void run();
 	
 private:
 	void init();
 	void update();
 	void draw();
 	void createButtons();
-	int findTheButtonPresed(sf::Vector2f& mousePos);
+	int findTheButtonPressed(sf::Vector2f& mousePos);
 	void drawScene();
-	int findButton(sf::Vector2f mousePos);
+	void whatButtonWasPressed(sf::Vector2f mousePos);
+	void backToMenu();
+	void selectPlayers();
 };
 
 

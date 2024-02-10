@@ -1,2 +1,12 @@
-﻿  Game.cpp
+﻿  Poker.cpp
+G:\ProyectosC++\poker_omaha\Poker.cpp(148,65): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+G:\ProyectosC++\poker_omaha\Poker.cpp(148,44): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
   PokerOmahaHi.vcxproj -> G:\ProyectosC++\poker_omaha\x64\Debug\PokerOmahaHi.exe

@@ -8,10 +8,10 @@ TriangleButton::TriangleButton(float size)
 
 	isVisible = false;
 
-	tringleButton.setRadius(size);
-	tringleButton.setPointCount(3);
+	triangleButton.setRadius(size);
+	triangleButton.setPointCount(3);
 
-	tringleButton.setPosition(sf::Vector2f(posX, posY));
+	triangleButton.setPosition(sf::Vector2f(posX, posY));
 }
 
 TriangleButton::~TriangleButton()
@@ -21,20 +21,20 @@ TriangleButton::~TriangleButton()
 void TriangleButton::draw(sf::RenderWindow& window)
 {
 	if(isVisible)
-	window.draw(tringleButton);
+	window.draw(triangleButton);
 }
 
 bool TriangleButton::isPressed(sf::Vector2f& mousePos)
 {
-	if (isVisible && tringleButton.getGlobalBounds().contains(mousePos))
+	if (isVisible && triangleButton.getGlobalBounds().contains(mousePos))
 		return true;
-
+	
 	return false;
 }
 
 void TriangleButton::setPostion(float posX, float posY)
 {
-	tringleButton.setPosition(sf::Vector2f(posX, posY));
+	triangleButton.setPosition(sf::Vector2f(posX, posY));
 }
 
 void TriangleButton::setVisibility(bool visible)
@@ -44,5 +44,5 @@ void TriangleButton::setVisibility(bool visible)
 
 void TriangleButton::rotate(float angle)
 {
-	tringleButton.rotate(angle);
+	triangleButton.rotate(angle);
 }

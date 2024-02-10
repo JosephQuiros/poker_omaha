@@ -14,26 +14,33 @@ Card::Card(int index, int suit, std::string dir)
 	this->suit = suit;
 
 
-	if (!texture.loadFromFile(dir)) {
+	if (!frontTexture.loadFromFile(dir) || !backTexture.loadFromFile("Cards/BC.png")) {
 		std::cout << "error ";
 		exit(-1);
 	}
-	shape.setTexture(texture);
 
+	frontSprite.setTexture(frontTexture);
+	backSprite.setTexture(backTexture);
 }
 
 Card::~Card()
 {
 }
 
-sf::Sprite Card::getSprite()
+sf::Sprite Card::getFrontSprite()
 {
-	return shape;
+	return frontSprite;
+}
+
+sf::Sprite Card::getBackSprite()
+{
+	return backSprite;
 }
 
 void Card::setPostions(float posX, float posY)
 {
-	shape.setPosition(posX, posY);
+	frontSprite.setPosition(posX, posY);
+	backSprite.setPosition(posX, posY);
 }
 
 int Card::getIndex()

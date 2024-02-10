@@ -23,7 +23,7 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Dealer.cpp" />
     <ClCompile Include="Deck.cpp" />
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Poker.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -35,7 +35,7 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="Dealer.h" />
     <ClInclude Include="Deck.h" />
-    <ClInclude Include="Game.h" />
+    <ClInclude Include="Poker.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RectangleButton.h" />
