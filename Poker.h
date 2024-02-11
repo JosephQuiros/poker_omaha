@@ -2,7 +2,7 @@
 #ifndef POKER_H
 #define POKER_H
 
-#include "Player.h"
+#include "List.h"
 #include "Dealer.h"
 #include "RectangleButton.h"
 
@@ -13,12 +13,13 @@ private:
 	sf::Texture texture;
 	sf::Sprite background;
 	Dealer* dealer;
-	Player* playersArray;
+	List* playerList;
 	static const int TOTAL_BUTTONS = 3;
 	Button* buttonArray[TOTAL_BUTTONS];
 	int numPlayers;
 	int playersInThisRound;
 	int turnPlayer;
+	Player* currentPlayer;
 	
 
 
@@ -35,7 +36,6 @@ private:
 	void preGame();
 	void createWindow();
 	void setPlayerAndDealerPosition();
-	void drawPlayers();
 	void drawButtons();
 	void createbutton();
 	int findTheButtonPressed(sf::Vector2f& mousePos);

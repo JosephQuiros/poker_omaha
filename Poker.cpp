@@ -4,7 +4,7 @@ Poker::Poker(int numPlayers)
 {
 	this->numPlayers = numPlayers;
 	dealer = new Dealer();
-	playersArray = new Player[numPlayers];
+	playerList = new List(numPlayers);
 	createWindow();
 	createbutton();
 	setPlayerAndDealerPosition();
@@ -17,7 +17,7 @@ Poker::~Poker()
 	for (i = 0; i < TOTAL_BUTTONS; i++) {
 		delete buttonArray[i];
 	}
-	delete[] playersArray;
+	delete playerList;
 	delete dealer;
 }
 
@@ -31,24 +31,13 @@ void Poker::createWindow()
 
 void Poker::setPlayerAndDealerPosition()
 {
-	float positionToDealer[2] = { 650.f, 410.f };
-	float positionXToPlayer[6] = { 570.f, 570.f, 920.f, 920.f, 570.f, 920.f };
+	float positionXToDealer = 650.f;
+	float positionYToDealer = 410.f;
+	float positionXToPlayer[6] = { 420.f, 420.f, 880.f, 880.f, 570.f, 920.f };
 	float positionYToPlayer[6] = { 40.f, 810.f, 40.f, 810.f, 400.f, 400.f };
-	int i;
 
-	for (i = 0; i < numPlayers; i++) {
-		playersArray[i].setPosition(positionXToPlayer[i], positionYToPlayer[i]);
-	}
-
-	dealer->setPosition(positionToDealer[0], positionToDealer[1]);
-}
-
-void Poker::drawPlayers()
-{
-	int  i;
-	for (i = 0; i < numPlayers; i++) {
-			playersArray[i].drawCards(window);
-	}
+	playerList->setPositionToPlayers(positionXToPlayer, positionYToPlayer, 6 ,6);
+	dealer->setPosition(positionXToDealer, positionYToDealer);
 }
 
 void Poker::drawButtons()
@@ -78,11 +67,13 @@ void Poker::createbutton()
 void Poker::dealCardsToPlayers()
 {
 	int i, j, numCards = 4;
+	Player* aux;
 
-	for (i = 0; i < numPlayers; i++) {
+	for (i = 1; i <= numPlayers; i++) {
+		aux = playerList->getPlayer(i);
 
 		for (j = 0; j < numCards; j++) {
-			dealer->dealCard(playersArray[i]);
+			dealer->dealCard(aux);
 		}
 	}
 }
@@ -90,20 +81,19 @@ void Poker::dealCardsToPlayers()
 void Poker::preGame()
 {
 	playersInThisRound = numPlayers;
-	turnPlayer = 0;
+	turnPlayer = 1;
 	dealer->shuffleDeck();
 	dealCardsToPlayers();
 	dealer->takeCard(3);
+	dealer->dealPokerButton(playerList->getPlayer(1), 1);
+	dealer->dealPokerButton(playerList->getPlayer(2), 2);
+	dealer->dealPokerButton(playerList->getPlayer(2), 3);
+	currentPlayer = playerList->getPlayer(turnPlayer);
 }
 
 void Poker::postGame()
 {
-	int i;
-	for (i = 0; i < numPlayers; i++) {
-		playersArray[i].returnCardToDeck();
-		playersArray[i].setIsInGame(true);
-		playersArray[i].setCardIsVisible(false);
-	}
+	playerList->returnTheirCardsToDeck();
 	dealer->returnCommunityCardsToDeck();
 	window.setVisible(true);
 }
@@ -111,7 +101,7 @@ void Poker::postGame()
 void Poker::play()
 {
 
-	while (true) {
+	for(int i = 0; i < 3; i++) {
 		preGame();
 		loop();
 		postGame();
@@ -168,7 +158,7 @@ void Poker::draw()
 	window.clear();
 	window.draw(background);
 	drawButtons();
-	drawPlayers();
+	playerList->drawPlayers(window);
 	dealer->drawCards(window);
 	window.display();
 }
@@ -193,33 +183,39 @@ void Poker::whatButtonWasPressed(sf::Vector2f mousePos)
 		break;
 
 	case 0:
-		if (playersArray[turnPlayer].getCardIsVisible() == false)
-			playersArray[turnPlayer].setCardIsVisible(true);
+		if (currentPlayer->CardIsVisible())
+			currentPlayer->setCardIsVisible(false);
 		else
-			playersArray[turnPlayer].setCardIsVisible(false);
+			currentPlayer->setCardIsVisible(true);
 		break;
 
 	case 1:
-		playersArray[turnPlayer].setIsInGame(false);
+		currentPlayer->setIsInGame(false);
 		playersInThisRound--;
-		if (turnPlayer < numPlayers - 1) {
+		if (turnPlayer < numPlayers) {
 			turnPlayer++;
+			currentPlayer = playerList->getPlayer(turnPlayer);
+
 		}
 		else {
 			dealer->takeCard(1);
-			turnPlayer = 0;
+			turnPlayer = 1;
+			currentPlayer = playerList->getPlayer(turnPlayer);
+			
 		}
 		break;
 
 	case 2:
-		playersArray[turnPlayer].setCardIsVisible(false);
+		currentPlayer->setCardIsVisible(false);
 
-		if (turnPlayer < numPlayers - 1) {
+		if (turnPlayer < numPlayers) {
 			turnPlayer++;
+			currentPlayer = playerList->getPlayer(turnPlayer);
 		}
 		else {
 			dealer->takeCard(1);
-			turnPlayer = 0;
+			turnPlayer = 1;
+			currentPlayer = playerList->getPlayer(turnPlayer);
 		}
 		break;
 
