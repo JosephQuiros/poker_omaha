@@ -1,12 +1,17 @@
 #include "PokerButton.h"
 
+PokerButton::PokerButton()
+{
+	posX = 0;
+	posY = 0;
+	amountOfCoins = 0;
+}
+
 PokerButton::PokerButton(sf::Color color, std::string fontDir, std::string text)
 {
 	this->posX = 0;
 	this->posY = 0;
-	widthOfSprite = 0;
-	heightOfSprite = 0;
-	coin = 0;
+	amountOfCoins = 0;
 
 	shape.setRadius(21);
 	shape.setFillColor(color);
@@ -34,9 +39,7 @@ PokerButton::PokerButton(sf::Color color, std::string fontDir, int totalCoins)
 {
 	this->posX = 0;
 	this->posY = 0;
-	widthOfSprite = 0;
-	heightOfSprite = 0;
-	coin = totalCoins;
+	amountOfCoins = totalCoins;
 
 	shape.setRadius(21);
 	shape.setFillColor(color);
@@ -68,13 +71,36 @@ void PokerButton::setCenteredText()
 {
 	sf::FloatRect textBound = text.getLocalBounds();
 	text.setOrigin(textBound.left + textBound.width / 2.0f, textBound.top + textBound.height / 2.0f);
-	text.setPosition(posX + widthOfSprite / 2.f, posY + heightOfSprite / 2.f);
+	text.setPosition(posX / 2.f, posY / 2.f);
 }
 
 void PokerButton::draw(sf::RenderWindow& window)
 {
 	window.draw(shape);
 	window.draw(text);
+}
+
+int PokerButton::getAmountOfCoins()
+{
+	return amountOfCoins;
+}
+
+void PokerButton::setAmountOfCoins(int amount)
+{
+	this->amountOfCoins = amount;
+	this->text.setString(std::to_string(amountOfCoins));
+}
+
+void PokerButton::addAmountOfCoins(int amount)
+{
+	amountOfCoins += amount;
+	this->text.setString(std::to_string(amountOfCoins));
+}
+
+void PokerButton::subtractAmountOfCoins(int amount)
+{
+	amountOfCoins -= amount;
+	this->text.setString(std::to_string(amountOfCoins));
 }
 
 void PokerButton::setPosition(float posX, float posY)

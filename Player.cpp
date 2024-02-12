@@ -7,7 +7,7 @@ Player::Player(int idPlayer)
 	posX = 0.f;
 	posY = 0.f;
 	cardIsVisible = false;
-	isInGame = true;
+	inGame = true;
 	coins = new PokerButton(sf::Color::Blue, "Fonts/times.ttf", 80);
 
 	setIdPlayer(idPlayer);
@@ -48,13 +48,15 @@ void Player::returnCardToDeck()
 void Player::drawOnWindow(sf::RenderWindow& window)
 {	
 
-	if (isInGame) {
+	if (inGame) {
 		int i;
+		coins->draw(window);
 
 		if (cardIsVisible) {
 			for (i = 0; i < numCardsOnDeck; i++) {
 				window.draw(ownDeck[i]->getFrontSprite());
 			}
+			
 		}
 
 
@@ -72,7 +74,6 @@ void Player::drawOnWindow(sf::RenderWindow& window)
 		}
 
 		window.draw(id);
-		coins->draw(window);
 	}
 	
 }
@@ -120,14 +121,44 @@ bool Player::CardIsVisible()
 	return cardIsVisible;
 }
 
+PokerButton* Player::getCoins()
+{
+	return coins;
+}
+
 void Player::setCardIsVisible(bool visible)
 {
 	this->cardIsVisible = visible;
 }
 
-void Player::setIsInGame(bool isInGame)
+void Player::setInGame(bool inGame)
 {
-	this->isInGame = isInGame;
+	this->inGame = inGame;
+}
+
+bool Player::isInGame()
+{
+	return inGame;
+}
+
+void Player::returnPokerButton()
+{
+	int i;
+
+	for (i = 0; i < MAX_BUTTONS; i++) {
+		pokerButtons[i] = nullptr;
+	}
+}
+
+bool Player::haveILittleBLind(PokerButton* LittleBlind)
+{
+	int i;
+	for (i = 0; i < MAX_BUTTONS; i++) {
+		if (pokerButtons[i] == LittleBlind) {
+			return true;
+		}
+	}
+	return false;
 }
 
 void Player::setIdPlayer(int idPlayer)

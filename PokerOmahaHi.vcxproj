@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BetSystem.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Dealer.cpp" />
@@ -34,6 +35,7 @@
     <ClCompile Include="TriangleButton.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BetSystem.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Dealer.h" />

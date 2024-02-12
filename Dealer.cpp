@@ -15,30 +15,21 @@ Dealer::Dealer()
 }
 
 Dealer::~Dealer() {
+	int i;
+
+	for (i = 0; i < 3; i++) {
+		delete pokerButtons[i];
+	}
+
+	delete[] pokerButtons;
 	delete deck;
+	delete pot;
 }
 
 void Dealer::dealCard(Player* player)
 {
 	player->takeCard(deck->getCard(positionInDeck));
 	positionInDeck++;
-}
-
-void Dealer::dealPokerButton(Player* player, int button)
-{
-	if (button == 1) {
-		player->takePokerButton(dealerButton);
-		return;
-	}
-	if (button == 2) {
-		player->takePokerButton(littleBlind);
-		return;
-	}
-	if (button == 3) {
-		player->takePokerButton(bigBlind);
-		return;
-	}
-	
 }
 
 void Dealer::takeCard(int iterations)
@@ -58,16 +49,20 @@ void Dealer::takeCard(int iterations)
 
 void Dealer::createPokerButtons()
 {
-	dealerButton = new PokerButton(sf::Color::White, "Fonts/times.ttf", "D");
-	littleBlind = new PokerButton(sf::Color::Yellow, "Fonts/times.ttf", "LB");
-	bigBlind = new PokerButton(sf::Color::Red, "Fonts/times.ttf", "BB");
+	pokerButtons = new PokerButton*[3];
+	pokerButtons[0] = new PokerButton(sf::Color::White, "Fonts/times.ttf", "D");
+	pokerButtons[1] = new PokerButton(sf::Color::Yellow, "Fonts/times.ttf", "LB");
+	pokerButtons[2] = new PokerButton(sf::Color::Red, "Fonts/times.ttf", "BB");
+
+	pot = new PokerButton(sf::Color::Blue, "Fonts/times.ttf", 0);
+
 }
 
 void Dealer::returnCommunityCardsToDeck()
 {
 	int i;
 	for (i = 0; i < numCommunityCards; i++) {
-
+		communityDeck[i] = nullptr;
 	}
 	numCommunityCards = 0;
 }
@@ -78,16 +73,33 @@ void Dealer::shuffleDeck()
 	deck->shuffle();
 }
 
+PokerButton** Dealer::getPokerButtons()
+{
+	return pokerButtons;
+}
+
+PokerButton* Dealer::getPokerButton(int pos)
+{
+	return pokerButtons[pos];
+}
+
+PokerButton* Dealer::getPot()
+{
+	return pot;
+}
+
 void Dealer::setPosition(float posX, float posY)
 {
 	this->posX = posX;
 	this->posY = posY;
+
+	pot->setPosition(posX + (MAX_CARDS * 72), posY);
 }
 
 void Dealer::drawCards(sf::RenderWindow& window)
 {
 	int i;
-
+	pot->draw(window);
 	for (i = 0; i < numCommunityCards; i++) {
 		window.draw(communityDeck[i]->getFrontSprite());
 	}

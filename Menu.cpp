@@ -2,19 +2,20 @@
 
 Menu::Menu()
 {
+	numPlayers = 2;
+	optionMenu = 0;
 	window.create(sf::VideoMode(500, 600), "Poker");
 	createButtons();
-	init();
 	poker = nullptr;
 }
 
 Menu::~Menu()
 {
-	std::cout << "destruir menu\n";
 	int i;
 	for (i = 0; i < TOTAL_BUTTONS; i++) {
 		delete buttonArray[i];
 	}
+	numPlayers = 2;
 }
 
 void Menu::createButtons()
@@ -42,6 +43,17 @@ void Menu::createButtons()
 	buttonArray[6]->setPostion(420.f, 290.f);
 	buttonArray[6]->rotate(180);
 
+	//text
+
+	if (!font.loadFromFile("Fonts/times.ttf"))
+	{
+		exit(-10);
+	}
+	text.setFont(font);
+	text.setString("Jugadores: " + std::to_string(numPlayers));
+	text.setPosition(200.f, 190.f);
+
+	init();
 }
 
 void Menu::init()
@@ -56,8 +68,6 @@ void Menu::init()
 		buttonArray[i]->setVisibility(false);
 	}
 
-	numPlayers = 2;
-	optionMenu = 0;
 }
 
 int Menu::findTheButtonPressed(sf::Vector2f& mousePos)
@@ -84,10 +94,10 @@ void Menu::drawScene()
 	if (optionMenu == 1) {
 		if(numPlayers<6)
 		buttonArray[5]->draw(window);
-
 		if(numPlayers>2)
 		buttonArray[6]->draw(window);
 
+		window.draw(text);
 		buttonArray[3]->draw(window);
 		buttonArray[4]->draw(window);
 
@@ -104,7 +114,8 @@ void Menu::whatButtonWasPressed(sf::Vector2f mousePos)
 	switch (findTheButtonPressed(mousePos))
 	{
 	case -1:
-		std::cout << "no preciono ningun boton\n";
+		//no button was presed
+		return;
 		break;
 
 	case 0:
@@ -132,14 +143,16 @@ void Menu::whatButtonWasPressed(sf::Vector2f mousePos)
 		break;
 
 	case 5:
-		if (numPlayers < 6)
+		if (numPlayers < 6) {
 			numPlayers++;
-		std::cout << numPlayers << "\n";
+			text.setString("Jugadores: " + std::to_string(numPlayers));
+		}
 		break;
 	case 6:
-		if (numPlayers > 2)
+		if (numPlayers > 2) {
 			numPlayers--;
-		std::cout << numPlayers << "\n";
+			text.setString("Jugadores: " + std::to_string(numPlayers));
+		}	
 		break;
 
 	default:
@@ -152,6 +165,7 @@ void Menu::backToMenu()
 {
 	optionMenu = 0;
 	numPlayers = 2;
+	text.setString("Jugadores: " + std::to_string(numPlayers));
 	buttonArray[0]->setVisibility(true);
 	buttonArray[1]->setVisibility(true);
 	buttonArray[2]->setVisibility(true);
@@ -188,12 +202,12 @@ void Menu::run()
 
 			if (event.type == sf::Event::KeyPressed) {
 
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) { //debug
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {//debugg
 					sf::Vector2i mousePos;
 
 					mousePos = sf::Mouse::getPosition(window);
 					std::cout << "pos X: " << mousePos.x << ".   Pos Y: " << mousePos.y << std::endl;
-				}//debug
+				}//debuggg
 
 			}
 
@@ -206,14 +220,8 @@ void Menu::run()
 			}
 		}
 
-		update();
-
 		draw();
 	}
-}
-
-void Menu::update()
-{
 }
 
 void Menu::draw()

@@ -5,6 +5,7 @@
 #include "List.h"
 #include "Dealer.h"
 #include "RectangleButton.h"
+#include "BetSystem.h"
 
 class Poker
 {
@@ -16,9 +17,11 @@ private:
 	List* playerList;
 	static const int TOTAL_BUTTONS = 3;
 	Button* buttonArray[TOTAL_BUTTONS];
+	BetSystem* betWindow;
 	int numPlayers;
-	int playersInThisRound;
+	int numPlayersInThisRound;
 	int turnPlayer;
+	int numRounds;
 	Player* currentPlayer;
 	
 
@@ -29,18 +32,20 @@ public:
 	void play();
 	
 private:
-	void loop();
+	void loop(int iterations);
 	void update();
 	void draw();
 	void dealCardsToPlayers();
 	void preGame();
+	void prefloop();
 	void createWindow();
 	void setPlayerAndDealerPosition();
 	void drawButtons();
 	void createbutton();
 	int findTheButtonPressed(sf::Vector2f& mousePos);
-	void whatButtonWasPressed(sf::Vector2f mousePos);
+	void whatButtonWasPressed(sf::Vector2f& mousePos);
 	void postGame();
+	void getBet(int player, int amount);
 };
 #endif
 

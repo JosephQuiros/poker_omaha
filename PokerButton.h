@@ -11,17 +11,19 @@ private:
 	sf::Text text;
 	float posX;
 	float posY;
-	float widthOfSprite;
-	float heightOfSprite;
-	int coin;
+	int amountOfCoins;
 
 public:
+	PokerButton();
 	PokerButton(sf::Color color, std::string fontDir, std::string text);
 	PokerButton(sf::Color color, std::string fontDir, int totalCoins);
 	~PokerButton();
 	void setPosition(float posX, float posY);
 	void draw(sf::RenderWindow& window);
-
+	int getAmountOfCoins();
+	void setAmountOfCoins(int amount);
+	void addAmountOfCoins(int amount);
+	void subtractAmountOfCoins(int amount);
 private:
 	void setCenteredText();
 

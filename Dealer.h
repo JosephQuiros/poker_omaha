@@ -3,7 +3,7 @@
 #define DEALER_H
 #include "Card.h"
 #include "Deck.h"
-#include "Player.h"
+#include "List.h"
 #include "PokerButton.h"
 
 class Dealer
@@ -12,9 +12,8 @@ private:
 	static const int MAX_CARDS = 5;
 	Deck* deck;
 	Card* communityDeck[MAX_CARDS];
-	PokerButton* dealerButton;
-	PokerButton* littleBlind;
-	PokerButton* bigBlind;
+	PokerButton** pokerButtons;
+	PokerButton* pot;
 	int positionInDeck;
 	int numCommunityCards;
 	float posX;
@@ -24,12 +23,14 @@ public:
 	Dealer();
 	~Dealer();
 	void dealCard(Player* player);
-	void dealPokerButton(Player* player, int button);
 	void takeCard(int iterations);
 	void setPosition(float posX, float posY);
 	void drawCards(sf::RenderWindow& window);
 	void returnCommunityCardsToDeck();
 	void shuffleDeck();
+	PokerButton** getPokerButtons();
+	PokerButton* getPokerButton(int pos);
+	PokerButton* getPot();
 private:
 	void createPokerButtons();
 };

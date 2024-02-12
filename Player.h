@@ -17,7 +17,7 @@ private:
 	sf::Font font;
 	int numCardsOnDeck;
 	bool cardIsVisible;
-	bool isInGame;
+	bool inGame;
 	float posX;
 	float posY;
 
@@ -30,8 +30,12 @@ public:
 	void takePokerButton(PokerButton* pokerButton);
 	void setPosition(float posX, float posY);
 	bool CardIsVisible();
+	PokerButton* getCoins();
 	void setCardIsVisible(bool isVisible);
-	void setIsInGame(bool isInGame);
+	void setInGame(bool inGame);
+	bool isInGame();
+	void returnPokerButton();
+	bool haveILittleBLind(PokerButton* LittleBlind);
 private:
 	void setIdPlayer(int idPlayer);
 };

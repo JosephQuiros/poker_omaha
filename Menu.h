@@ -1,7 +1,6 @@
 #pragma once
 #ifndef MENU_H
 #define MENU_H
-#include <iostream> //debug
 #include "RectangleButton.h"
 #include "TriangleButton.h"
 #include "Poker.h"
@@ -12,6 +11,8 @@ private:
 
 	Poker* poker;
 	sf::RenderWindow window;
+	sf::Font font;
+	sf::Text text;
 	static const int TOTAL_BUTTONS = 7;
 	Button* buttonArray[TOTAL_BUTTONS];
 	int optionMenu;
@@ -24,7 +25,6 @@ public:
 	
 private:
 	void init();
-	void update();
 	void draw();
 	void createButtons();
 	int findTheButtonPressed(sf::Vector2f& mousePos);
