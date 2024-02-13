@@ -193,6 +193,10 @@ int Player::getPointOfHand(Card**& communityDeck)
 	if (actualPoints < newPoints) {
 		actualPoints = newPoints;
 	}
+	/*newPoints = flush(communityDeck);
+	if (actualPoints < newPoints) {
+		actualPoints = newPoints;
+	}*/
 
 	return actualPoints;
 }
@@ -248,3 +252,32 @@ int Player::twoPairs(Card**& communityDeck)
 {
 	return 0;
 }
+//
+//int Player::flush(Card**& communityDeck)
+//{
+//	int countBySuit[4] = { 0 };  // Contador para cada palo
+//	int maxCount = 0;
+//
+//	// Contar las cartas por palo en la mano del jugador y las cartas comunitarias
+//	for (int i = 0; i < 2; i++) {
+//		countBySuit[hand[i]->getSuit()]++;
+//	}
+//	for (int i = 0; i < 5; i++) {
+//		countBySuit[communityDeck[i]->getSuit()]++;
+//	}
+//
+//	// Encontrar el palo con más cartas
+//	for (int i = 0; i < 4; i++) {
+//		if (countBySuit[i] > maxCount) {
+//			maxCount = countBySuit[i];
+//		}
+//	}
+//
+//	// Si hay 5 o más cartas del mismo palo, es un flush
+//	if (maxCount >= 5) {
+//		return 1;  // Valor para indicar un flush
+//	}
+//	else {
+//		return 0;  // No es un flush
+//	}
+//}

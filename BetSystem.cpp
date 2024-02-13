@@ -93,7 +93,7 @@ void BetSystem::whatButtonWasPressed(sf::Vector2f& mousePos, int& turnPlayer, in
 	switch (findTheButtonPressed(mousePos))
 	{
 	case -1:
-		std::cout << "no preciono ningun boton en betWindow\n";
+		//std::cout << "no preciono ningun boton en betWindow\n";
 		break;
 	case 0:
 		if (currentPlayer->getCoins()->getAmountOfCoins() >= lastBet) {
@@ -146,6 +146,7 @@ void BetSystem::call(Player*& currentPlayer)
 {
 	currentPlayer->getCoins()->subtractAmountOfCoins(lastBet);
 	dealer->getPot()->addAmountOfCoins(lastBet);
+	
 }
 
 void BetSystem::raise(Player*& currentPlayer)

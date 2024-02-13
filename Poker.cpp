@@ -28,6 +28,11 @@ Poker::~Poker()
 void Poker::createWindow()
 {
 	window.create(sf::VideoMode(1752, 944), "Poker");
+
+	window.setFramerateLimit(60);
+	countdownSeconds = 20;
+	
+
 	window.setPosition(sf::Vector2i(50, 10));
 	texture.loadFromFile("mesaFondo.jpg");
 	background.setTexture(texture);
@@ -68,6 +73,14 @@ void Poker::createbutton()
 	}
 
 	betWindow->setPosition(1400, 665);
+
+	if (!fontClock.loadFromFile("Fonts/times.ttf")) exit(-1);
+
+	textClock.setFont(fontClock);
+	textClock.setString("Time: ");
+	textClock.setPosition(20.f, 20.f);
+	textClock.setFillColor(sf::Color::Black);
+
 }
 
 void Poker::dealCardsToPlayers()
@@ -126,6 +139,11 @@ void Poker::getBet(int player, int amount)
 	dealer->getPot()->addAmountOfCoins(amount);
 }
 
+void Poker::startClock()
+{
+	startTime = clock.getElapsedTime();
+}
+
 void Poker::play()
 {
 
@@ -145,6 +163,7 @@ void Poker::loop(int iterations)
 {
 	numRounds = 0;
 
+	startClock();
 	while (window.isOpen() && numPlayersInThisRound >=2 && numRounds < iterations)
 	{
 		sf::Event event;
@@ -159,8 +178,7 @@ void Poker::loop(int iterations)
 			if (event.type == sf::Event::KeyPressed) {
 
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) { //debug
-					std::cout << numPlayersInThisRound << "\n\n";
-					std::cout << numPlayers<<"\n\n";
+	
 				}//debug
 
 			}
@@ -187,13 +205,42 @@ void Poker::loop(int iterations)
 
 void Poker::update()
 {
+	sf::Time currentTime = clock.getElapsedTime();
+	sf::Time elapsedTime = currentTime - startTime;
+	int elapsedSeconds = elapsedTime.asSeconds();
+	
+	int remainingSeconds = countdownSeconds - elapsedSeconds;
 
+	if (remainingSeconds == 0) 
+	{
+		currentPlayer->setInGame(false); //pafuera
+		numPlayersInThisRound - 1;
+
+		if (turnPlayer < numPlayers) {
+			turnPlayer++;
+			currentPlayer = playerList->getPlayer(turnPlayer);
+
+		}
+		else {
+			dealer->takeCard(1);
+			turnPlayer = 1;
+			currentPlayer = playerList->getPlayer(turnPlayer);
+			numRounds++;
+		}
+		startClock();
+	}
+
+	textClock.setString("TIME \n  " + std::to_string(remainingSeconds));
+	
 }
 
 void Poker::draw()
 {
 	window.clear();
 	window.draw(background);
+
+	window.draw(textClock);
+	
 	drawButtons();
 	playerList->drawPlayers(window);
 	dealer->drawCards(window);
@@ -217,10 +264,11 @@ void Poker::whatButtonWasPressed(sf::Vector2f& mousePos)
 	switch (findTheButtonPressed(mousePos))
 	{
 	case -1:
-		std::cout << "no preciono ningun boton\n";
+	//	std::cout << "no preciono ningun boton\n";
 		break;
 
 	case 0:
+
 		if (currentPlayer->CardIsVisible())
 			currentPlayer->setCardIsVisible(false);
 		else
@@ -228,6 +276,8 @@ void Poker::whatButtonWasPressed(sf::Vector2f& mousePos)
 		break;
 
 	case 1:
+		startClock();
+
 		currentPlayer->setInGame(false);
 		numPlayersInThisRound--;
 
@@ -245,10 +295,17 @@ void Poker::whatButtonWasPressed(sf::Vector2f& mousePos)
 		break;
 
 	case 2:
-		if (betWindow->isVisible())
+		
+		if (betWindow->isVisible()) {
 			betWindow->setVisible(false);
-		else
+			startClock();
+		}
+				
+		else{
 			betWindow->setVisible(true);
+			startClock();
+		}
+		
 		break;
 
 	default:

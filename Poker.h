@@ -10,6 +10,12 @@
 class Poker
 {
 private:
+	sf::Text textClock;
+	sf::Font fontClock;
+	sf::Clock clock;
+	sf::Time startTime;
+	int countdownSeconds;
+
 	sf::RenderWindow window;
 	sf::Texture texture;
 	sf::Sprite background;
@@ -30,6 +36,8 @@ public:
 	Poker(int numPlayer);
 	~Poker();
 	void play();
+
+	void startClock();
 	
 private:
 	void loop(int iterations);
@@ -46,6 +54,8 @@ private:
 	void whatButtonWasPressed(sf::Vector2f& mousePos);
 	void postGame();
 	void getBet(int player, int amount);
+
+
 };
 #endif
 

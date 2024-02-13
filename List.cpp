@@ -270,10 +270,12 @@ Player* List::findWinner(Card** communityDeck, int& numPlayersInThisRound)
 	while (aux != nullptr) {
 		if (aux->getPlayer()->isInGame()) {
 			pointsOfActualPlayer = aux->getPlayer()->getPointOfHand(communityDeck);
+
 			if (pointsOfActualPlayer > pointOfWinnerPlayer) {
 				pointOfWinnerPlayer = pointsOfActualPlayer;
 				winner = aux->getPlayer();
 			}
+
 		}
 		std::cout << pointsOfActualPlayer << '\n';
 		aux = aux->getNext();
@@ -282,3 +284,4 @@ Player* List::findWinner(Card** communityDeck, int& numPlayersInThisRound)
 	system("pause");
 	return winner;
 }
+

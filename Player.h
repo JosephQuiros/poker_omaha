@@ -39,11 +39,11 @@ public:
 	int getPointOfHand(Card**& communityDeck);
 	std::string getId();
 
-
 private:
 	void setIdPlayer(int idPlayer);
 	int onePair(Card**& communityDeck);
 	int twoPairs(Card**& communityDeck);
+	int flush(Card**& communityDeck); //color
 };
 
 #endif
