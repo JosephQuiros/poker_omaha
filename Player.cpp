@@ -161,6 +161,11 @@ bool Player::haveILittleBLind(PokerButton* LittleBlind)
 	return false;
 }
 
+std::string Player::getId()
+{
+	return id.getString();
+}
+
 void Player::setIdPlayer(int idPlayer)
 {
 	if (!font.loadFromFile("Fonts/times.ttf"))
@@ -172,4 +177,74 @@ void Player::setIdPlayer(int idPlayer)
 	id.setFillColor(sf::Color::Black);
 	id.setPosition(posX + (MAX_CARDS * 72.f) + 40.f, posY);
 	id.setString("Jugador " + std::to_string(idPlayer));
+}
+
+int Player::getPointOfHand(Card**& communityDeck)
+{
+	int actualPoints = 0;
+	int newPoints;
+
+	newPoints = onePair(communityDeck);
+	if (actualPoints < newPoints) {
+		actualPoints = newPoints;
+	}
+
+	newPoints = twoPairs(communityDeck);
+	if (actualPoints < newPoints) {
+		actualPoints = newPoints;
+	}
+
+	return actualPoints;
+}
+
+int Player::onePair(Card**& communityDeck)
+{
+
+	int maxIndex = 0;
+
+	int i, j;
+
+	for (i = 0; i < MAX_CARDS - 1; i++) {
+
+		for (j = i + 1; j < MAX_CARDS; j++) {
+			if (maxIndex < ownDeck[i]->getIndex()) {
+				if (ownDeck[i]->getIndex() == ownDeck[j]->getIndex()) {
+					maxIndex = ownDeck[i]->getIndex();
+				}
+			}
+		}
+	}
+
+	for (i = 0; i < 5 - 1; i++) {
+
+		for (j = i + 1; j < 5; j++) {
+			if (maxIndex < communityDeck[i]->getIndex()) {
+				if (communityDeck[i]->getIndex() == communityDeck[j]->getIndex()) {
+					maxIndex = communityDeck[i]->getIndex();
+				}
+			}
+		}
+	}
+
+	for (i = 0; i < MAX_CARDS - 1; i++) {
+
+		for (j = i + 1; j < 5; j++) {
+			if (maxIndex < ownDeck[i]->getIndex()) {
+				if (ownDeck[i]->getIndex() == communityDeck[j]->getIndex()) {
+					maxIndex = ownDeck[i]->getIndex();
+				}
+			}
+		}
+	}
+
+	if (maxIndex != 0) {
+		return 100 + maxIndex;
+	}
+
+	return maxIndex;
+}
+
+int Player::twoPairs(Card**& communityDeck)
+{
+	return 0;
 }

@@ -15,7 +15,6 @@ private:
 public:
 	Deck();
 	~Deck();
-	void printCard(); //debug
 	void shuffle();
 	Card* getCard(int pos);
 

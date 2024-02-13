@@ -88,6 +88,11 @@ PokerButton* Dealer::getPot()
 	return pot;
 }
 
+Card** Dealer::getCommunityDeck()
+{
+	return communityDeck;
+}
+
 void Dealer::setPosition(float posX, float posY)
 {
 	this->posX = posX;

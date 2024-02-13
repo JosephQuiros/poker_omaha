@@ -198,8 +198,6 @@ int List::getTotalPlayer()
 	return count;
 }
 
-
-
 void List::dealPokerButtonsToPlayers(PokerButton** pokerButtons)
 {
 	int i, count = 0;
@@ -249,4 +247,38 @@ int List::findPlayerNextToBigBlind(PokerButton* button)
 	}
 
 	return position;
+}
+
+Player* List::findWinner(Card** communityDeck, int& numPlayersInThisRound)
+{
+	if (numPlayersInThisRound == 1) {
+		aux = head;
+
+		while (aux->getPlayer()->isInGame() != true) {
+			aux = aux->getNext();
+		}
+
+		return aux->getPlayer();
+	}
+
+	aux = head;
+	Player* winner = aux->getPlayer(); //nullptr
+
+	int pointsOfActualPlayer = 0;
+	int pointOfWinnerPlayer = 0;
+
+	while (aux != nullptr) {
+		if (aux->getPlayer()->isInGame()) {
+			pointsOfActualPlayer = aux->getPlayer()->getPointOfHand(communityDeck);
+			if (pointsOfActualPlayer > pointOfWinnerPlayer) {
+				pointOfWinnerPlayer = pointsOfActualPlayer;
+				winner = aux->getPlayer();
+			}
+		}
+		std::cout << pointsOfActualPlayer << '\n';
+		aux = aux->getNext();
+	}
+	std::cout << "ganador: " << winner->getId() << '\n';
+	system("pause");
+	return winner;
 }

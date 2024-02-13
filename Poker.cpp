@@ -106,6 +106,10 @@ void Poker::prefloop()
 
 void Poker::postGame()
 {
+	system("cls");
+	std::cout << "estoy aca\n";
+	Player* winner = playerList->findWinner(dealer->getCommunityDeck(), numPlayersInThisRound);
+	//winner->getCoins()->addAmountOfCoins(dealer->getPot()->getAmount());
 	dealer->getPot()->setAmountOfCoins(0);
 	betWindow->restart();
 	playerList->returnTheirCardsToDeck();
@@ -127,9 +131,12 @@ void Poker::play()
 
 	while(window.isOpen() && numPlayers >= 2)
 	{
-		preGame();
-		loop(3);
-		postGame();
+		if(window.isOpen())
+			preGame();
+		if (window.isOpen())
+			loop(3);
+		if (window.isOpen())
+			postGame();
 	}
 
 }

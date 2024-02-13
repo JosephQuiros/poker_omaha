@@ -31,6 +31,8 @@ public:
 	PokerButton** getPokerButtons();
 	PokerButton* getPokerButton(int pos);
 	PokerButton* getPot();
+	Card** getCommunityDeck();
+
 private:
 	void createPokerButtons();
 };

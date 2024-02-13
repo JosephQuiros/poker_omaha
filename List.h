@@ -22,6 +22,7 @@ public:
 	int getTotalPlayer();
 	void dealPokerButtonsToPlayers(PokerButton** pokerButtons);
 	int findPlayerNextToBigBlind(PokerButton* button);
+	Player* findWinner(Card** communityDeck, int& numPlayersInThisRound);
 
 private:
 	void append(int idPlayer);
