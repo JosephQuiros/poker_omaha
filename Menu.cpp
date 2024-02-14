@@ -20,7 +20,6 @@ Menu::~Menu()
 
 void Menu::createButtons()
 {
-
 	buttonArray[0] = new RectangleButton(200.f, 50.f, "PLAY", "Fonts/times.ttf");
 	buttonArray[1] = new RectangleButton(200.f, 50.f, "ABOUT", "Fonts/times.ttf");
 	buttonArray[2] = new RectangleButton(200.f, 50.f, "EXIT", "Fonts/times.ttf");
@@ -33,25 +32,29 @@ void Menu::createButtons()
 	buttonArray[3]->setPostion(0.f, 0.f);
 	buttonArray[4]->setPostion(300.f, 550.f);
 
-	//Triangular buttons
-
 	buttonArray[5] = new TriangleButton(20.f);
 	buttonArray[6] = new TriangleButton(20.f);
 	
 	buttonArray[5]->setPostion(380.f, 190.f);
-
 	buttonArray[6]->setPostion(420.f, 290.f);
 	buttonArray[6]->rotate(180);
 
-	//text
 
 	if (!font.loadFromFile("Fonts/times.ttf"))
 	{
 		exit(-10);
 	}
-	text.setFont(font);
-	text.setString("Jugadores: " + std::to_string(numPlayers));
-	text.setPosition(200.f, 190.f);
+	text[0].setFont(font);
+	text[0].setString("PLAYERS:\n\t " + std::to_string(numPlayers));
+	text[0].setPosition(200.f, 190.f);
+
+	text[1].setFont(font);
+	text[1].setString("Desarolladores:\nJoseph Quiros Murillo.\nKatherine Guatemala Barrientos.\n\nCurso de verano 2023 - 2024.");
+	text[1].setPosition(100.f, 230.f);
+	text[1].setFillColor(sf::Color::Black);
+
+	texture.loadFromFile("fondoMenu.png");
+	background.setTexture(texture);
 
 	init();
 }
@@ -97,13 +100,16 @@ void Menu::drawScene()
 		if(numPlayers>2)
 		buttonArray[6]->draw(window);
 
-		window.draw(text);
+		window.draw(text[0]);
 		buttonArray[3]->draw(window);
 		buttonArray[4]->draw(window);
 
 		return;
 	}
 	if (optionMenu == 2) {
+		window.draw(text[1]);
+		buttonArray[3]->draw(window);
+
 		return;
 	}
 
@@ -123,6 +129,7 @@ void Menu::whatButtonWasPressed(sf::Vector2f mousePos)
 		break;
 
 	case 1:
+		showAbout();
 		break;
 
 	case 2:
@@ -145,13 +152,13 @@ void Menu::whatButtonWasPressed(sf::Vector2f mousePos)
 	case 5:
 		if (numPlayers < 6) {
 			numPlayers++;
-			text.setString("Jugadores: " + std::to_string(numPlayers));
+			text[0].setString("PLAYERS:\n\t  " + std::to_string(numPlayers));
 		}
 		break;
 	case 6:
 		if (numPlayers > 2) {
 			numPlayers--;
-			text.setString("Jugadores: " + std::to_string(numPlayers));
+			text[0].setString("PLAYERS:\n\t " + std::to_string(numPlayers));
 		}	
 		break;
 
@@ -165,7 +172,7 @@ void Menu::backToMenu()
 {
 	optionMenu = 0;
 	numPlayers = 2;
-	text.setString("Jugadores: " + std::to_string(numPlayers));
+	text[0].setString("PLAYERS:\n\t  " + std::to_string(numPlayers));
 	buttonArray[0]->setVisibility(true);
 	buttonArray[1]->setVisibility(true);
 	buttonArray[2]->setVisibility(true);
@@ -187,6 +194,16 @@ void Menu::selectPlayers()
 	buttonArray[6]->setVisibility(true);
 }
 
+void Menu::showAbout()
+{
+	optionMenu = 2;
+	buttonArray[0]->setVisibility(false);
+	buttonArray[1]->setVisibility(false);
+	buttonArray[2]->setVisibility(false);
+	buttonArray[3]->setVisibility(true);
+
+}
+
 void Menu::run()
 {
 	while (window.isOpen())
@@ -198,17 +215,6 @@ void Menu::run()
 			if (event.type == sf::Event::Closed) {
 				window.close();
 				return;
-			}
-
-			if (event.type == sf::Event::KeyPressed) {
-
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {//debugg
-					sf::Vector2i mousePos;
-
-					mousePos = sf::Mouse::getPosition(window);
-					std::cout << "pos X: " << mousePos.x << ".   Pos Y: " << mousePos.y << std::endl;
-				}//debuggg
-
 			}
 
 			if (event.type == sf::Event::MouseButtonPressed) {
@@ -227,6 +233,7 @@ void Menu::run()
 void Menu::draw()
 {
 	window.clear(sf::Color::Magenta);
+	window.draw(background);
 	drawScene();
 	window.display();
 }

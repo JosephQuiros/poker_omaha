@@ -30,7 +30,7 @@ private:
 	void shiftLeftHead();
 	
 };
-#endif // !LIST_H
+#endif 
 
 
 

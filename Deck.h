@@ -11,13 +11,11 @@ private:
 	static const int MAX = 52;
 	Card* deck[MAX];
 	
-
 public:
 	Deck();
 	~Deck();
 	void shuffle();
 	Card* getCard(int pos);
-
 
 private:
 	

@@ -1,193 +1,423 @@
-numero de Ronda:1
-Jugadores para esta ronda:4
+Numero de Ronda:1
+Jugadores para esta ronda:3
 
 
 Jugadores con los Poker Buttons:
-Jugador 1: Dealer
-Jugador 2: Little Blind
-Jugador 3: Big Blind
+Player 1: Dealer
+Player 2: Little Blind
+Player 3: Big Blind
 
 
-inicio del prefloop
-Jugador 2: apuesta 2 fichas para iniciar la ronda
-Jugador 3: dobla la apuesta de la little blind
-Jugador 4 apuesta 4 fichas
-
-
-Jugador 1 apuesta 4 fichas
+Inicio del prefloop
+Player 2: apuesta 2 fichas para iniciar la ronda
+Player 3: dobla la apuesta de la little blind
+Player 1 apuesta 4 fichas
 
 
 fin de esta ronda
 
 
-el dealer reparte las cartas a los jugadores
+El dealer reparte las cartas a los jugadores
 
 
-inicia el floop
+Inicia el floop
 
-Jugador 2 tiene las cartas:
-8 de Hearts
-2 de Diamonds
-J de Spades
-3 de Diamonds
+Player 2 tiene las cartas:
+4 de Spades
+8 de Diamonds
+5 de Hearts
+Q de Spades
 En la mesa hay: 
-4 de Hearts. 5 de Clubs. K de Clubs. 
+6 de Clubs. 8 de Hearts. Q de Diamonds. 
 
-Jugador 2 apuesta 4 fichas
+Player 2 apuesta 4 fichas
 
 
-Jugador 3 tiene las cartas:
-6 de Clubs
-Q de Clubs
+Player 3 tiene las cartas:
+5 de Spades
+K de Spades
+3 de Hearts
 6 de Spades
-7 de Spades
 En la mesa hay: 
-4 de Hearts. 5 de Clubs. K de Clubs. 
+6 de Clubs. 8 de Hearts. Q de Diamonds. 
 
-Jugador 3 apuesta 4 fichas
+Player 3 apuesta 4 fichas
 
 
-Jugador 4 tiene las cartas:
-A de Diamonds
-J de Clubs
-A de Spades
-3 de Spades
+Player 1 tiene las cartas:
+3 de Clubs
+10 de Hearts
+Q de Hearts
+8 de Spades
 En la mesa hay: 
-4 de Hearts. 5 de Clubs. K de Clubs. 
+6 de Clubs. 8 de Hearts. Q de Diamonds. 
 
-Jugador 4 apuesta 4 fichas
-
-
-Jugador 1 tiene las cartas:
-2 de Spades
-4 de Diamonds
-9 de Clubs
-7 de Hearts
-En la mesa hay: 
-4 de Hearts. 5 de Clubs. K de Clubs. 
-
-Jugador 1 apuesta 8 fichas
+Player 1 apuesta 4 fichas
 
 
 fin de esta ronda
 
 
-Jugador 2 tiene las cartas:
-8 de Hearts
-2 de Diamonds
-J de Spades
-3 de Diamonds
+Player 2 tiene las cartas:
+4 de Spades
+8 de Diamonds
+5 de Hearts
+Q de Spades
 En la mesa hay: 
-4 de Hearts. 5 de Clubs. K de Clubs. 4 de Clubs. 
+6 de Clubs. 8 de Hearts. Q de Diamonds. 7 de Clubs. 
 
-Jugador 2 apuesta 16 fichas
+Player 2 apuesta 4 fichas
 
 
-Jugador 3 tiene las cartas:
-6 de Clubs
-Q de Clubs
+Player 3 tiene las cartas:
+5 de Spades
+K de Spades
+3 de Hearts
 6 de Spades
-7 de Spades
 En la mesa hay: 
-4 de Hearts. 5 de Clubs. K de Clubs. 4 de Clubs. 
+6 de Clubs. 8 de Hearts. Q de Diamonds. 7 de Clubs. 
 
-Jugador 3 apuesta 16 fichas
+Player 3 apuesta 4 fichas
 
 
-Jugador 4 tiene las cartas:
-A de Diamonds
-J de Clubs
-A de Spades
-3 de Spades
+Player 1 tiene las cartas:
+3 de Clubs
+10 de Hearts
+Q de Hearts
+8 de Spades
 En la mesa hay: 
-4 de Hearts. 5 de Clubs. K de Clubs. 4 de Clubs. 
+6 de Clubs. 8 de Hearts. Q de Diamonds. 7 de Clubs. 
 
-Jugador 4 apuesta 16 fichas
-
-
-Jugador 1 tiene las cartas:
-2 de Spades
-4 de Diamonds
-9 de Clubs
-7 de Hearts
-En la mesa hay: 
-4 de Hearts. 5 de Clubs. K de Clubs. 4 de Clubs. 
-
-Jugador 1 apuesta 16 fichas
+Player 1 apuesta 4 fichas
 
 
 fin de esta ronda
 
 
-Jugador 2 tiene las cartas:
-8 de Hearts
-2 de Diamonds
-J de Spades
-3 de Diamonds
+Player 2 tiene las cartas:
+4 de Spades
+8 de Diamonds
+5 de Hearts
+Q de Spades
 En la mesa hay: 
-4 de Hearts. 5 de Clubs. K de Clubs. 4 de Clubs. 5 de Hearts. 
+6 de Clubs. 8 de Hearts. Q de Diamonds. 7 de Clubs. 9 de Hearts. 
 
-Jugador 2 apuesta 16 fichas
+Player 2 apuesta 4 fichas
 
 
-Jugador 3 tiene las cartas:
-6 de Clubs
-Q de Clubs
+Player 3 tiene las cartas:
+5 de Spades
+K de Spades
+3 de Hearts
 6 de Spades
-7 de Spades
 En la mesa hay: 
-4 de Hearts. 5 de Clubs. K de Clubs. 4 de Clubs. 5 de Hearts. 
+6 de Clubs. 8 de Hearts. Q de Diamonds. 7 de Clubs. 9 de Hearts. 
 
-Jugador 3 apuesta 16 fichas
+Player 3 apuesta 4 fichas
 
 
-Jugador 4 tiene las cartas:
-A de Diamonds
-J de Clubs
-A de Spades
-3 de Spades
+Player 1 tiene las cartas:
+3 de Clubs
+10 de Hearts
+Q de Hearts
+8 de Spades
 En la mesa hay: 
-4 de Hearts. 5 de Clubs. K de Clubs. 4 de Clubs. 5 de Hearts. 
+6 de Clubs. 8 de Hearts. Q de Diamonds. 7 de Clubs. 9 de Hearts. 
 
-Jugador 4 apuesta 16 fichas
-
-
-Jugador 1 tiene las cartas:
-2 de Spades
-4 de Diamonds
-9 de Clubs
-7 de Hearts
-En la mesa hay: 
-4 de Hearts. 5 de Clubs. K de Clubs. 4 de Clubs. 5 de Hearts. 
-
-Jugador 1 apuesta 16 fichas
+Player 1 apuesta 4 fichas
 
 
 fin de esta ronda
 
 
-Jugador 2 tiene las cartas:
-8 de Hearts
-2 de Diamonds
-J de Spades
-3 de Diamonds
+Player 2 tiene las cartas:
+4 de Spades
+8 de Diamonds
+5 de Hearts
+Q de Spades
 En la mesa hay: 
-4 de Hearts. 5 de Clubs. K de Clubs. 4 de Clubs. 5 de Hearts. 
+6 de Clubs. 8 de Hearts. Q de Diamonds. 7 de Clubs. 9 de Hearts. 
 
-el ganador de la ronda es el Jugador 4
-el ganador se lleva el pote de 162 fichas-------------------fin de la partida----------------------------------
+El ganador de la ronda es el Player 1
+El ganador se lleva el pote de 46 fichas.
+-------------------fin de la partida----------------------------------
 
 
-numero de Ronda:2
-Jugadores para esta ronda:4
+Numero de Ronda:2
+Jugadores para esta ronda:3
 
 
 Jugadores con los Poker Buttons:
-Jugador 2: Dealer
-Jugador 3: Little Blind
-Jugador 4: Big Blind
+Player 2: Dealer
+Player 3: Little Blind
+Player 1: Big Blind
 
 
-inicio del prefloop
-Jugador 3: apuesta 2 fichas para iniciar la ronda
-Jugador 4: dobla la apuesta de la little blind
+Inicio del prefloop
+Player 3: apuesta 2 fichas para iniciar la ronda
+Player 1: dobla la apuesta de la little blind
+Player 2 apuesta 4 fichas
+
+
+fin de esta ronda
+
+
+El dealer reparte las cartas a los jugadores
+
+
+Inicia el floop
+
+Player 3 tiene las cartas:
+7 de Clubs
+5 de Spades
+6 de Clubs
+7 de Hearts
+En la mesa hay: 
+K de Diamonds. Q de Clubs. A de Spades. 
+
+Player 3 apuesta 4 fichas
+
+
+Player 1 tiene las cartas:
+J de Hearts
+2 de Hearts
+7 de Diamonds
+K de Clubs
+En la mesa hay: 
+K de Diamonds. Q de Clubs. A de Spades. 
+
+Player 1 apuesta 4 fichas
+
+
+Player 2 tiene las cartas:
+2 de Clubs
+9 de Hearts
+4 de Spades
+9 de Spades
+En la mesa hay: 
+K de Diamonds. Q de Clubs. A de Spades. 
+
+Player 2 apuesta 4 fichas
+
+
+fin de esta ronda
+
+
+Player 3 tiene las cartas:
+7 de Clubs
+5 de Spades
+6 de Clubs
+7 de Hearts
+En la mesa hay: 
+K de Diamonds. Q de Clubs. A de Spades. 6 de Hearts. 
+
+Player 3 apuesta 4 fichas
+
+
+Player 1 tiene las cartas:
+J de Hearts
+2 de Hearts
+7 de Diamonds
+K de Clubs
+En la mesa hay: 
+K de Diamonds. Q de Clubs. A de Spades. 6 de Hearts. 
+
+Player 1 apuesta 4 fichas
+
+
+Player 2 tiene las cartas:
+2 de Clubs
+9 de Hearts
+4 de Spades
+9 de Spades
+En la mesa hay: 
+K de Diamonds. Q de Clubs. A de Spades. 6 de Hearts. 
+
+Player 2 apuesta 4 fichas
+
+
+fin de esta ronda
+
+
+Player 3 tiene las cartas:
+7 de Clubs
+5 de Spades
+6 de Clubs
+7 de Hearts
+En la mesa hay: 
+K de Diamonds. Q de Clubs. A de Spades. 6 de Hearts. Q de Hearts. 
+
+Player 3 apuesta 4 fichas
+
+
+Player 1 tiene las cartas:
+J de Hearts
+2 de Hearts
+7 de Diamonds
+K de Clubs
+En la mesa hay: 
+K de Diamonds. Q de Clubs. A de Spades. 6 de Hearts. Q de Hearts. 
+
+Player 1 apuesta 4 fichas
+
+
+Player 2 tiene las cartas:
+2 de Clubs
+9 de Hearts
+4 de Spades
+9 de Spades
+En la mesa hay: 
+K de Diamonds. Q de Clubs. A de Spades. 6 de Hearts. Q de Hearts. 
+
+Player 2 apuesta 8 fichas
+
+
+fin de esta ronda
+
+
+Player 3 tiene las cartas:
+7 de Clubs
+5 de Spades
+6 de Clubs
+7 de Hearts
+En la mesa hay: 
+K de Diamonds. Q de Clubs. A de Spades. 6 de Hearts. Q de Hearts. 
+
+El ganador de la ronda es el Player 3
+El ganador se lleva el pote de 50 fichas.
+-------------------fin de la partida----------------------------------
+
+
+Numero de Ronda:3
+Jugadores para esta ronda:3
+
+
+Jugadores con los Poker Buttons:
+Player 3: Dealer
+Player 1: Little Blind
+Player 2: Big Blind
+
+
+Inicio del prefloop
+Player 1: apuesta 2 fichas para iniciar la ronda
+Player 2: dobla la apuesta de la little blind
+Player 3 apuesta 8 fichas
+
+
+fin de esta ronda
+
+
+El dealer reparte las cartas a los jugadores
+
+
+Inicia el floop
+
+Player 1 tiene las cartas:
+3 de Diamonds
+5 de Hearts
+J de Spades
+10 de Spades
+En la mesa hay: 
+8 de Diamonds. 3 de Clubs. 3 de Spades. 
+
+Player 1 apuesta 16 fichas
+
+
+Player 2 tiene las cartas:
+4 de Hearts
+Q de Clubs
+7 de Spades
+5 de Spades
+En la mesa hay: 
+8 de Diamonds. 3 de Clubs. 3 de Spades. 
+
+Player 2 apuesta 16 fichas
+
+
+Player 3 tiene las cartas:
+K de Diamonds
+9 de Spades
+J de Clubs
+2 de Spades
+En la mesa hay: 
+8 de Diamonds. 3 de Clubs. 3 de Spades. 
+
+Player 3 apuesta 32 fichas
+
+
+fin de esta ronda
+
+
+Player 1 tiene las cartas:
+3 de Diamonds
+5 de Hearts
+J de Spades
+10 de Spades
+En la mesa hay: 
+8 de Diamonds. 3 de Clubs. 3 de Spades. A de Spades. 
+
+Player 1 apuesta 64 fichas
+
+
+Player 2 tiene las cartas:
+4 de Hearts
+Q de Clubs
+7 de Spades
+5 de Spades
+En la mesa hay: 
+8 de Diamonds. 3 de Clubs. 3 de Spades. A de Spades. 
+
+Player 3 tiene las cartas:
+K de Diamonds
+9 de Spades
+J de Clubs
+2 de Spades
+En la mesa hay: 
+8 de Diamonds. 3 de Clubs. 3 de Spades. A de Spades. 
+
+fin de esta ronda
+
+
+Player 1 tiene las cartas:
+3 de Diamonds
+5 de Hearts
+J de Spades
+10 de Spades
+En la mesa hay: 
+8 de Diamonds. 3 de Clubs. 3 de Spades. A de Spades. 7 de Clubs. 
+
+El ganador de la ronda es el Player 1
+El ganador se lleva el pote de 142 fichas.
+-------------------fin de la partida----------------------------------
+
+
+Numero de Ronda:4
+Jugadores para esta ronda:3
+
+
+Jugadores con los Poker Buttons:
+Player 1: Dealer
+Player 2: Little Blind
+Player 3: Big Blind
+
+
+Inicio del prefloop
+Player 2: apuesta 2 fichas para iniciar la ronda
+Player 3: dobla la apuesta de la little blind
+El archivo fue cerrado en medio de la partida.
+
+
+El dealer reparte las cartas a los jugadores
+
+
+Inicia el floop
+
+Player 1 tiene las cartas:
+8 de Spades
+9 de Spades
+4 de Hearts
+Q de Clubs
+En la mesa hay: 
+5 de Hearts. A de Spades. 
+
+El juego termino

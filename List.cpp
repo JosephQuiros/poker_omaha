@@ -137,7 +137,7 @@ void List::returnTheirCardsToDeck()
 
 		player->returnCardToDeck();
 		player->setInGame(true);
-		player->setCardIsVisible(false);
+		player->setCardVisible(false);
 		aux = aux->getNext();
 	}
 }
@@ -262,7 +262,7 @@ Player* List::findWinner(Card** communityDeck, int& numPlayersInThisRound)
 	}
 
 	aux = head;
-	Player* winner = aux->getPlayer(); //nullptr
+	Player* winner = aux->getPlayer(); 
 
 	int pointsOfActualPlayer = 0;
 	int pointOfWinnerPlayer = 0;
@@ -276,12 +276,10 @@ Player* List::findWinner(Card** communityDeck, int& numPlayersInThisRound)
 				winner = aux->getPlayer();
 			}
 
-		}
-		std::cout << pointsOfActualPlayer << '\n';
+		}		
 		aux = aux->getNext();
 	}
-	std::cout << "ganador: " << winner->getId() << '\n';
-	system("pause");
+	
 	return winner;
 }
 

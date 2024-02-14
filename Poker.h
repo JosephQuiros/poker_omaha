@@ -29,7 +29,7 @@ private:
 	int numRound;
 	int lastBet;
 	Player* currentPlayer;
-	sf::Text text;
+	sf::Text text[2];
 	std::ofstream saveFile;
 
 public:
@@ -38,7 +38,7 @@ public:
 	void play();	
 	
 private:
-	void startClock();
+	void restartClock();
 	void prefloopLoop();
 	void gameLoop();
 	void update();
@@ -49,7 +49,7 @@ private:
 	void createWindow();
 	void setPlayerAndDealerPosition();
 	void drawButtons();
-	void createbutton();
+	void createButton();
 	int findTheButtonPressed(sf::Vector2f& mousePos);
 	void whatButtonWasPressed(sf::Vector2f& mousePos);
 	void postGame();
@@ -58,6 +58,7 @@ private:
 	void call();
 	void raise();
 	void restartTextOfLastBet();
+	void restartTextOfCurrentPlayer();
 	void makeEndLine(int iterations);
 	Player* findPokerButtonInPlayer(PokerButton* button);
 	void saveNumPlayersInthisGame();

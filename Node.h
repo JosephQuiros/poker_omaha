@@ -16,7 +16,7 @@ public:
 	Node* getNext();
 	void setNext(Node* next);
 };
-#endif // !NODO-H
+#endif 
 
 
 

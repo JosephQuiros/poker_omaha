@@ -13,14 +13,11 @@ public:
 	TriangleButton(float size);
 	~TriangleButton();
 	
-	 void draw(sf::RenderWindow& window) ;
-	 bool isPressed(sf::Vector2f& mousePos) ;
+	 void draw(sf::RenderWindow& window);
+	 bool isPressed(sf::Vector2f& mousePos);
 	 void setPostion(float posX, float posY);
-	 void setVisibility(bool visible) ;
+	 void setVisibility(bool visible);
 	 void rotate(float angle);
-
-private:
-
 };
 
-#endif // !TRIANGLE_BUTTON
+#endif 

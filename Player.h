@@ -29,9 +29,9 @@ public:
 	void drawOnWindow(sf::RenderWindow &window);
 	void takePokerButton(PokerButton* pokerButton);
 	void setPosition(float posX, float posY);
-	bool CardIsVisible();
+	bool isCardVisible();
 	PokerButton* getCoins();
-	void setCardIsVisible(bool isVisible);
+	void setCardVisible(bool visible);
 	void setInGame(bool inGame);
 	bool isInGame();
 	bool haveCards();
@@ -44,8 +44,6 @@ public:
 private:
 	void setIdPlayer(int idPlayer);
 	int onePair(Card**& communityDeck);
-	int twoPairs(Card**& communityDeck);
-	int flush(Card**& communityDeck); //color
 };
 
 #endif

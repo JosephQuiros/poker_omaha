@@ -54,7 +54,6 @@ void Deck::swapCard(Card*& card1, Card*& card2)
 
 int Deck::getRandomNum(int position)
 {
-
 	return position + rand() % (MAX - position);
 }
 

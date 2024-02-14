@@ -32,7 +32,6 @@ void Player::takeCard(Card* card)
 		card->setPostions(posX + numCardsOnDeck * 72, posY);
 		numCardsOnDeck++;
 	}
-
 }
 
 void Player::returnCardToDeck()
@@ -52,15 +51,15 @@ void Player::drawOnWindow(sf::RenderWindow& window)
 		int i;
 		coins->draw(window);
 
-		if (cardIsVisible) {
+		if (cardIsVisible) 
+		{
 			for (i = 0; i < numCardsOnDeck; i++) {
 				window.draw(ownDeck[i]->getFrontSprite());
 			}
 			
 		}
-
-
-		else {
+		else 
+		{
 			for (i = 0; i < numCardsOnDeck; i++) {
 				window.draw(ownDeck[i]->getBackSprite());
 			}
@@ -116,7 +115,7 @@ void Player::takePokerButton(PokerButton* pokerButton)
 	}
 }
 
-bool Player::CardIsVisible()
+bool Player::isCardVisible()
 {
 	return cardIsVisible;
 }
@@ -126,7 +125,7 @@ PokerButton* Player::getCoins()
 	return coins;
 }
 
-void Player::setCardIsVisible(bool visible)
+void Player::setCardVisible(bool visible)
 {
 	this->cardIsVisible = visible;
 }
@@ -193,7 +192,7 @@ void Player::setIdPlayer(int idPlayer)
 	id.setCharacterSize(20);
 	id.setFillColor(sf::Color::Black);
 	id.setPosition(posX + (MAX_CARDS * 72.f) + 40.f, posY);
-	id.setString("Jugador " + std::to_string(idPlayer));
+	id.setString("Player " + std::to_string(idPlayer));
 }
 
 int Player::getPointOfHand(Card**& communityDeck)
@@ -205,15 +204,6 @@ int Player::getPointOfHand(Card**& communityDeck)
 	if (actualPoints < newPoints) {
 		actualPoints = newPoints;
 	}
-
-	newPoints = twoPairs(communityDeck);
-	if (actualPoints < newPoints) {
-		actualPoints = newPoints;
-	}
-	/*newPoints = flush(communityDeck);
-	if (actualPoints < newPoints) {
-		actualPoints = newPoints;
-	}*/
 
 	return actualPoints;
 }
@@ -264,37 +254,3 @@ int Player::onePair(Card**& communityDeck)
 
 	return maxIndex;
 }
-
-int Player::twoPairs(Card**& communityDeck)
-{
-	return 0;
-}
-
-//int Player::flush(Card**& communityDeck)
-//{
-//	int countBySuit[4] = { 0 };  // Contador para cada palo
-//	int maxCount = 0;
-//
-//	// Contar las cartas por palo en la mano del jugador y las cartas comunitarias
-//	for (int i = 0; i < 2; i++) {
-//		countBySuit[hand[i]->getSuit()]++;
-//	}
-//	for (int i = 0; i < 5; i++) {
-//		countBySuit[communityDeck[i]->getSuit()]++;
-//	}
-//
-//	// Encontrar el palo con más cartas
-//	for (int i = 0; i < 4; i++) {
-//		if (countBySuit[i] > maxCount) {
-//			maxCount = countBySuit[i];
-//		}
-//	}
-//
-//	// Si hay 5 o más cartas del mismo palo, es un flush
-//	if (maxCount >= 5) {
-//		return 1;  // Valor para indicar un flush
-//	}
-//	else {
-//		return 0;  // No es un flush
-//	}
-//}

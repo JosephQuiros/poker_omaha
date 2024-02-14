@@ -17,8 +17,6 @@ private:
 	sf::Sprite frontSprite;
 	sf::Sprite backSprite;
 
-
-
 public:
 	Card();
 	Card(int index, int suit, std::string dir);
@@ -26,9 +24,8 @@ public:
 	sf::Sprite getFrontSprite();
 	sf::Sprite getBackSprite();
 	void setPostions(float posX, float posY);
-	int getIndex(); //debug
-	int getSuit(); //debug
-
+	int getIndex(); 
+	int getSuit(); 
 
 };
 #endif 

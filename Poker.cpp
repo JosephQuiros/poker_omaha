@@ -7,7 +7,7 @@ Poker::Poker(int numPlayers)
 	this->numPlayers = numPlayers;
 	numPlayersInThisRound = numPlayers;
 	createWindow();
-	createbutton();
+	createButton();
 	setPlayerAndDealerPosition();
 	saveFile.open("match.txt");
 	numRound = 1;
@@ -15,16 +15,14 @@ Poker::Poker(int numPlayers)
 
 Poker::~Poker()
 {
-	saveFile << "el juego termino";
+	saveFile << "El juego termino";
 	saveFile.close();
 	int i;
-	std::cout << "destruir poker\n";
 	for (i = 0; i < TOTAL_BUTTONS; i++) {
 		delete buttonArray[i];
 	}
 	delete playerList;
-	delete dealer;
-	
+	delete dealer;	
 }
 
 void Poker::createWindow()
@@ -32,7 +30,7 @@ void Poker::createWindow()
 	window.create(sf::VideoMode(1752, 944), "Poker");
 
 	window.setFramerateLimit(60);
-	countdownSeconds = 20;
+	countdownSeconds = 40;
 	window.setPosition(sf::Vector2i(50, 10));
 	texture.loadFromFile("mesaFondo.jpg");
 	background.setTexture(texture);
@@ -42,8 +40,8 @@ void Poker::setPlayerAndDealerPosition()
 {
 	float positionXToDealer = 650.f;
 	float positionYToDealer = 410.f;
-	float positionXToPlayer[6] = { 420.f, 880.f, 880.f, 420.f, 570.f, 920.f };
-	float positionYToPlayer[6] = { 40.f, 40.f ,810.f, 810.f, 400.f, 400.f };
+	float positionXToPlayer[6] = { 420.f, 880.f,1300.f, 880.f, 420.f,5.f };
+	float positionYToPlayer[6] = { 40.f, 40.f,410.f, 810.f, 810.f,410.f };
 
 	playerList->setPositionToPlayers(positionXToPlayer, positionYToPlayer, 6 ,6);
 	dealer->setPosition(positionXToDealer, positionYToDealer);
@@ -57,7 +55,7 @@ void Poker::drawButtons()
 	}
 }
 
-void Poker::createbutton()
+void Poker::createButton()
 {
 	buttonArray[0] = new RectangleButton(150.f, 50.f, "SHOW", "Fonts/times.ttf");
 	buttonArray[1] = new RectangleButton(200.f, 50.f, "FOLD", "Fonts/times.ttf");
@@ -81,10 +79,15 @@ void Poker::createbutton()
 	textClock.setPosition(20.f, 20.f);
 	textClock.setFillColor(sf::Color::Black);
 
-	text.setFont(font);
-	text.setString("last bet: 4");
-	text.setFillColor(sf::Color::White);
-	text.setPosition(800, 550);
+	text[0].setFont(font);
+	text[0].setString("Last bet: 4");
+	text[0].setFillColor(sf::Color::White);
+	text[0].setPosition(800, 590);
+
+	text[1].setFont(font);
+	text[1].setFillColor(sf::Color::White);
+	text[1].setPosition(765, 550);
+
 }
 
 void Poker::dealCardsToPlayers()
@@ -110,9 +113,9 @@ void Poker::preGame()
 	dealer->shuffleDeck();
 	prefloop();
 	dealCardsToPlayers();
-	saveFile << "el dealer reparte las cartas a los jugadores" << std::endl;
+	saveFile << "El dealer reparte las cartas a los jugadores" << std::endl;
 	makeEndLine(2);
-	saveFile << "inicia el floop";
+	saveFile << "Inicia el floop";
 	makeEndLine(2);
 	dealer->takeCard(2);
 	saveCardsOfPlayer(currentPlayer);
@@ -120,7 +123,7 @@ void Poker::preGame()
 
 void Poker::prefloop()
 {
-	saveFile << "inicio del prefloop" << std::endl;
+	saveFile << "Inicio del prefloop" << std::endl;
 	getBet(1, 2);
 	saveFile << playerList->getPlayer(1)->getId() << ": " << "apuesta 2 fichas para iniciar la ronda" << std::endl;
 	getBet(2, 4);
@@ -128,16 +131,16 @@ void Poker::prefloop()
 	lastBet = 4;
 	turnPlayer = playerList->findPlayerNextToBigBlind(dealer->getPokerButton(2));
 	currentPlayer = playerList->getPlayer(turnPlayer);
+	restartTextOfCurrentPlayer();
 	prefloopLoop();
 }
 
 void Poker::postGame()
 {
 	system("cls");
-	std::cout << "estoy aca\n";
 	Player* winner = playerList->findWinner(dealer->getCommunityDeck(), numPlayersInThisRound);
-	saveFile << "el ganador de la ronda es el " << winner->getId()<<std::endl;
-	saveFile << "el ganador se lleva el pote de " << dealer->getPot()->getAmountOfCoins() <<" fichas"<<std::endl;
+	saveFile << "El ganador de la ronda es el " << winner->getId()<<std::endl;
+	saveFile << "El ganador se lleva el pote de " << dealer->getPot()->getAmountOfCoins() <<" fichas."<<std::endl;
 	saveFile << "-------------------fin de la partida----------------------------------" << std::endl;
 	makeEndLine(2);
 	winner->getCoins()->addAmountOfCoins(dealer->getPot()->getAmountOfCoins());
@@ -158,7 +161,7 @@ void Poker::getBet(int player, int amount)
 	dealer->getPot()->addAmountOfCoins(amount);
 }
 
-void Poker::startClock()
+void Poker::restartClock()
 {
 	startTime = clock.getElapsedTime();
 }
@@ -183,7 +186,7 @@ void Poker::prefloopLoop()
 	buttonArray[0]->setVisibility(false);
 	totalRounds = 0;
 
-	startClock();
+	restartClock();
 	while (window.isOpen() && numPlayersInThisRound >= 2 && totalRounds < 1)
 	{
 		sf::Event event;
@@ -216,7 +219,7 @@ void Poker::gameLoop()
 	buttonArray[0]->setVisibility(true);
 	totalRounds = 0;
 
-	startClock();
+	restartClock();
 	while (window.isOpen() && numPlayersInThisRound >=2 && totalRounds < 3)
 	{
 		sf::Event event;
@@ -227,14 +230,6 @@ void Poker::gameLoop()
 				window.close();
 				fileWasCloseInGame();
 				return;
-			}
-
-			if (event.type == sf::Event::KeyPressed) {
-
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) { //debug
-	
-				}//debug
-
 			}
 
 			if (event.type == sf::Event::MouseButtonPressed) {
@@ -264,10 +259,10 @@ void Poker::update()
 	{
 		saveFile << currentPlayer->getId() << " se ha quedado sin tiempo y ha sido expulsado de la mesa";
 		makeEndLine(2);
-		currentPlayer->setInGame(false); //pafuera
+		currentPlayer->setInGame(false); 
 		numPlayersInThisRound--;
 		nextTurn();
-		startClock();
+		restartClock();
 	}
 
 	textClock.setString("TIME \n  " + std::to_string(remainingSeconds));
@@ -282,7 +277,8 @@ void Poker::draw()
 	drawButtons();
 	playerList->drawPlayers(window);
 	dealer->drawCards(window);
-	window.draw(text);
+	window.draw(text[1]);
+	window.draw(text[0]);
 	window.display();
 }
 
@@ -302,19 +298,18 @@ void Poker::whatButtonWasPressed(sf::Vector2f& mousePos)
 	switch (findTheButtonPressed(mousePos))
 	{
 	case -1:
-	//	std::cout << "no preciono ningun boton\n";
 		break;
 
 	case 0:
 
-		if (currentPlayer->CardIsVisible())
-			currentPlayer->setCardIsVisible(false);
+		if (currentPlayer->isCardVisible())
+			currentPlayer->setCardVisible(false);
 		else
-			currentPlayer->setCardIsVisible(true);
+			currentPlayer->setCardVisible(true);
 		break;
 
 	case 1:
-		startClock();
+		restartClock();
 
 		currentPlayer->setInGame(false);
 		numPlayersInThisRound--;
@@ -344,11 +339,12 @@ void Poker::whatButtonWasPressed(sf::Vector2f& mousePos)
 
 void Poker::nextTurn()
 {
-	currentPlayer->setCardIsVisible(false);
+	currentPlayer->setCardVisible(false);
 	if (turnPlayer < numPlayers) {
 		turnPlayer++;
 		currentPlayer = playerList->getPlayer(turnPlayer);
 		saveCardsOfPlayer(currentPlayer);
+		restartTextOfCurrentPlayer();
 	}
 	else {
 		dealer->takeCard(1);
@@ -358,6 +354,7 @@ void Poker::nextTurn()
 		totalRounds++;
 		currentPlayer = playerList->getPlayer(turnPlayer);
 		saveCardsOfPlayer(currentPlayer);
+		restartTextOfCurrentPlayer();
 	}
 
 
@@ -365,6 +362,7 @@ void Poker::nextTurn()
 
 void Poker::call()
 {
+	restartClock();
 	saveFile << currentPlayer->getId() << " apuesta " << lastBet << " fichas" << std::endl;
 	makeEndLine(2);
 	currentPlayer->getCoins()->subtractAmountOfCoins(lastBet);
@@ -374,10 +372,11 @@ void Poker::call()
 
 void Poker::raise()
 {
+	restartClock();
 	lastBet *= 2;
 	saveFile << currentPlayer->getId()<<" apuesta " << lastBet << " fichas" << std::endl;
 	makeEndLine(2);
-	text.setString("last bet: " + std::to_string(lastBet));
+	text[0].setString("Last bet: " + std::to_string(lastBet));
 	currentPlayer->getCoins()->subtractAmountOfCoins(lastBet);
 	dealer->getPot()->addAmountOfCoins(lastBet);
 }
@@ -385,7 +384,12 @@ void Poker::raise()
 void Poker::restartTextOfLastBet()
 {
 	lastBet = 4;
-	text.setString("last bet: " + std::to_string(lastBet));
+	text[0].setString("Last bet: " + std::to_string(lastBet));
+}
+
+void Poker::restartTextOfCurrentPlayer()
+{
+	text[1].setString("Turn of: " + currentPlayer->getId());
 }
 
 void Poker::makeEndLine(int iterations)
@@ -412,7 +416,7 @@ Player* Poker::findPokerButtonInPlayer(PokerButton* button)
 
 void Poker::saveNumPlayersInthisGame()
 {
-	saveFile << "numero de Ronda:" << numRound << std::endl;
+	saveFile << "Numero de Ronda:" << numRound << std::endl;
 	saveFile << "Jugadores para esta ronda:" << numPlayers << std::endl;
 	makeEndLine(1);
 }
@@ -434,8 +438,6 @@ void Poker::savePlayersWithPokerButton()
 	saveFile << aux->getId() << ": " << "Big Blind" << std::endl;
 
 	makeEndLine(1);
-
-
 }
 
 void Poker::saveCardsOfPlayer(Player* player)
@@ -550,6 +552,6 @@ void Poker::saveCommunityCards(Card** communityCards)
 
 void Poker::fileWasCloseInGame()
 {
-	saveFile << "el archivo fue cerrado en medio de la partida. Hasta luego" << std::endl;
+	saveFile << "El archivo fue cerrado en medio de la partida." << std::endl;
 	makeEndLine(2);
 }

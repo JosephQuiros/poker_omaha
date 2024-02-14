@@ -8,15 +8,16 @@
 class Menu
 {
 private:
-
 	Poker* poker;
 	sf::RenderWindow window;
 	sf::Font font;
-	sf::Text text;
+	sf::Text text[2];
 	static const int TOTAL_BUTTONS = 7;
 	Button* buttonArray[TOTAL_BUTTONS];
 	int optionMenu;
 	int numPlayers;
+	sf::Texture texture;
+	sf::Sprite background;
 
 public:
 	Menu();
@@ -32,6 +33,7 @@ private:
 	void whatButtonWasPressed(sf::Vector2f mousePos);
 	void backToMenu();
 	void selectPlayers();
+	void showAbout();
 };
 
 

@@ -1,16 +1,14 @@
 #pragma once
 #ifndef BUTTON_H
 #define BUTTON_H
-#include <iostream> //debug
+#include <iostream>
 #include "SFML/Graphics.hpp"
 class Button
 {
 protected:
 	float posX;
 	float posY;
-
 	bool isVisible;
-
 
 public:
 	Button();

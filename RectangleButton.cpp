@@ -51,7 +51,6 @@ void RectangleButton::setPostion(float posX, float posY)
 	text.setPosition(posX + width /2.f , posY + height / 2.f);
 }
 
-
 bool RectangleButton::isPressed(sf::Vector2f& mousePos)
 {
 	if (isVisible && shape.getGlobalBounds().contains(mousePos))
@@ -63,7 +62,6 @@ bool RectangleButton::isPressed(sf::Vector2f& mousePos)
 void RectangleButton::setVisibility(bool visible)
 {
 	isVisible = visible;
-
 }
 
 void RectangleButton::rotate(float angle)
