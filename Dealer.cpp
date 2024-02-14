@@ -93,6 +93,19 @@ Card** Dealer::getCommunityDeck()
 	return communityDeck;
 }
 
+bool Dealer::haveCards()
+{
+	if (numCommunityCards > 1) {
+		return true;
+	}
+	return false;
+}
+
+int Dealer::getnumOfCommunityDeck()
+{
+	return numCommunityCards;
+}
+
 void Dealer::setPosition(float posX, float posY)
 {
 	this->posX = posX;

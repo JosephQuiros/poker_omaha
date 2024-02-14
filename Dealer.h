@@ -32,6 +32,8 @@ public:
 	PokerButton* getPokerButton(int pos);
 	PokerButton* getPot();
 	Card** getCommunityDeck();
+	bool haveCards();
+	int getnumOfCommunityDeck();
 
 private:
 	void createPokerButtons();

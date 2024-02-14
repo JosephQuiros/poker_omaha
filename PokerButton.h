@@ -24,6 +24,7 @@ public:
 	void setAmountOfCoins(int amount);
 	void addAmountOfCoins(int amount);
 	void subtractAmountOfCoins(int amount);
+
 private:
 	void setCenteredText();
 

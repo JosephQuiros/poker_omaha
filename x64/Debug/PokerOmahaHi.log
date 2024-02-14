@@ -1,27 +1,23 @@
-﻿  Menu.cpp
-C:\Projects\proyectPoker\poker_omaha\Menu.cpp(215,65): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+﻿  Poker.cpp
+G:\ProyectosC++\poker_omaha\Poker.cpp(200,65): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-C:\Projects\proyectPoker\poker_omaha\Menu.cpp(215,44): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+G:\ProyectosC++\poker_omaha\Poker.cpp(200,44): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-  Poker.cpp
-C:\Projects\proyectPoker\poker_omaha\Poker.cpp(187,65): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+G:\ProyectosC++\poker_omaha\Poker.cpp(241,65): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-C:\Projects\proyectPoker\poker_omaha\Poker.cpp(187,44): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+G:\ProyectosC++\poker_omaha\Poker.cpp(241,44): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
           with
           [
               T=float
           ]
-C:\Projects\proyectPoker\poker_omaha\Poker.cpp(210,21): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Projects\proyectPoker\poker_omaha\Poker.cpp(220,25): warning C4552: "-": el resultado de la expresión no se usa
-  main.cpp
-  Generando código...
-  PokerOmahaHi.vcxproj -> C:\Projects\proyectPoker\poker_omaha\x64\Debug\PokerOmahaHi.exe
+G:\ProyectosC++\poker_omaha\Poker.cpp(259,21): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+  PokerOmahaHi.vcxproj -> G:\ProyectosC++\poker_omaha\x64\Debug\PokerOmahaHi.exe

@@ -231,7 +231,7 @@ int List::findPlayerNextToBigBlind(PokerButton* button)
 	aux = head;
 	int position = 1;
 
-	while (aux != nullptr && !aux->getPlayer()->haveILittleBLind(button)) {
+	while (aux != nullptr && !aux->getPlayer()->haveIPokerButton(button)) {
 		aux = aux->getNext();
 		position++;
 	}

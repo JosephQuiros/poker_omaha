@@ -141,6 +141,14 @@ bool Player::isInGame()
 	return inGame;
 }
 
+bool Player::haveCards()
+{
+	if (numCardsOnDeck > 1) {
+		return true;
+	}
+	return false;
+}
+
 void Player::returnPokerButton()
 {
 	int i;
@@ -150,11 +158,11 @@ void Player::returnPokerButton()
 	}
 }
 
-bool Player::haveILittleBLind(PokerButton* LittleBlind)
+bool Player::haveIPokerButton(PokerButton* button)
 {
 	int i;
 	for (i = 0; i < MAX_BUTTONS; i++) {
-		if (pokerButtons[i] == LittleBlind) {
+		if (pokerButtons[i] == button) {
 			return true;
 		}
 	}
@@ -164,6 +172,15 @@ bool Player::haveILittleBLind(PokerButton* LittleBlind)
 std::string Player::getId()
 {
 	return id.getString();
+}
+
+Card* Player::getCard(int position)
+{
+	if (position < MAX_CARDS && position > -1)
+	{
+		return ownDeck[position];
+	}
+	return nullptr;
 }
 
 void Player::setIdPlayer(int idPlayer)
@@ -232,7 +249,7 @@ int Player::onePair(Card**& communityDeck)
 
 	for (i = 0; i < MAX_CARDS - 1; i++) {
 
-		for (j = i + 1; j < 5; j++) {
+		for (j = 0; j < 5; j++) {
 			if (maxIndex < ownDeck[i]->getIndex()) {
 				if (ownDeck[i]->getIndex() == communityDeck[j]->getIndex()) {
 					maxIndex = ownDeck[i]->getIndex();
@@ -252,7 +269,7 @@ int Player::twoPairs(Card**& communityDeck)
 {
 	return 0;
 }
-//
+
 //int Player::flush(Card**& communityDeck)
 //{
 //	int countBySuit[4] = { 0 };  // Contador para cada palo

@@ -34,10 +34,12 @@ public:
 	void setCardIsVisible(bool isVisible);
 	void setInGame(bool inGame);
 	bool isInGame();
+	bool haveCards();
 	void returnPokerButton();
-	bool haveILittleBLind(PokerButton* LittleBlind);
+	bool haveIPokerButton(PokerButton* button);
 	int getPointOfHand(Card**& communityDeck);
 	std::string getId();
+	Card* getCard(int position);
 
 private:
 	void setIdPlayer(int idPlayer);
